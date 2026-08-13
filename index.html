@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>¡Feliz Cumpleaños, Mi Amor!</title>
+    <title>¡Feliz Cumpleaños, Mi Vida! 🌸</title>
     <style>
         body {
             margin: 0;
             padding: 0;
-            background: linear-gradient(135deg, #1a001a, #4d0039);
+            background-color: #2b002b;
             height: 100vh;
             display: flex;
             flex-direction: column;
@@ -19,51 +19,55 @@
             color: #fff;
             text-align: center;
         }
+
         h1 {
             font-size: 2.5rem;
             margin-bottom: 10px;
-            color: #ff99bb;
-            text-shadow: 0 0 15px rgba(255, 153, 187, 0.6);
-            animation: fadeIn 2s ease-in-out;
+            color: #ff99cc;
+            text-shadow: 0 0 15px rgba(255, 153, 204, 0.8);
+            z-index: 10;
         }
+
         p {
             font-size: 1.2rem;
             max-width: 600px;
             padding: 0 20px;
-            color: #ffccdd;
-            margin-bottom: 30px;
-            animation: fadeIn 3s ease-in-out;
+            color: #ffcce6;
+            line-height: 1.5;
+            z-index: 10;
         }
-        .flower-container {
-            font-size: 5rem;
-            animation: bounce 2s infinite alternate;
-            cursor: pointer;
+
+        .flowers {
+            display: flex;
+            gap: 20px;
+            font-size: 3rem;
+            margin-bottom: 20px;
+            animation: bloom 3s ease-in-out infinite alternate;
         }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
+
+        @keyframes bloom {
+            from { transform: scale(0.8); opacity: 0.7; }
+            to { transform: scale(1.2); opacity: 1; }
         }
-        @keyframes bounce {
-            from { transform: scale(1); }
-            to { transform: scale(1.1); }
-        }
+
         .footer {
-            position: absolute;
-            bottom: 20px;
-            font-size: 0.9rem;
-            color: #cca6ff;
+            margin-top: 30px;
+            font-size: 0.8rem;
+            color: #ff99cc;
         }
     </style>
 </head>
 <body>
 
-    <h1>¡Feliz Cumpleaños, Mi Vida! 🌸</h1>
-    <p>Hice este pequeño detalle digital especialmente para ti, porque te mereces el universo entero. Que cada día esté lleno de flores y de tanta felicidad como la que tú me das. ¡Te amo muchísimo!</p>
-    
-    <div class="flower-container">
-        🌷🌻🌹
+    <div class="flowers">
+        <span>🌷</span>
+        <span>🌻</span>
+        <span>🌹</span>
     </div>
 
+    <h1>¡Feliz Cumpleaños, Mi Vida! 🌸</h1>
+    <p>He preparado este pequeño detalle digital especialmente para ti, porque te mereces el universo entero. Que cada día esté lleno de flores y de tanta felicidad como la que tú me das. ¡Te amo muchísimo!</p>
+    
     <div class="footer">Hecho con todo el amor del mundo para ti 💖</div>
 
 </body>
