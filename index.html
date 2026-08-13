@@ -2,108 +2,438 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Para Angi, el universo entero 🌌🌷🌻</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Angi, mi compañera de vida y mi multiverso 🌻🕷️🌷</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,700&family=Montserrat:wght@300;400;600&display=swap');
+        * {
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
 
         body {
-            margin: 0; background: #0d0215; color: #fff;
-            font-family: 'Montserrat', sans-serif; overflow-x: hidden;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #1b0c1e 0%, #2d1235 35%, #3e2723 70%, #120516 100%);
+            font-family: 'Georgia', serif;
+            color: #fce4ec;
+            overflow-x: hidden;
+            text-align: center;
         }
 
-        .section { 
-            padding: 100px 5%; min-height: 90vh; position: relative;
-            border-bottom: 2px solid rgba(255, 215, 0, 0.1);
-            display: flex; flex-direction: column; align-items: center; justify-content: center;
+        /* Reproductor de música flotante */
+        .music-player {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            z-index: 1000;
+            background: rgba(45, 15, 50, 0.95);
+            backdrop-filter: blur(15px);
+            padding: 12px 22px;
+            border-radius: 40px;
+            border: 2px solid rgba(255, 215, 0, 0.7);
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            box-shadow: 0 10px 35px rgba(0,0,0,0.85);
         }
 
-        h1, h2 { font-family: 'Playfair Display', serif; color: #ffd700; }
-        .morado { background: radial-gradient(circle at center, #2e0838 0%, #0d0215 100%); }
-        .vintage { background: #1a0b2e; }
-
-        .foto-estilo { 
-            width: 300px; border: 8px solid #fdfdfd; 
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5); 
-            margin: 20px; transform: rotate(-3deg); transition: 0.3s;
-        }
-        .foto-estilo:hover { transform: scale(1.05) rotate(0deg); }
-
-        .card-detalle {
-            background: rgba(255, 255, 255, 0.05); padding: 40px; border-radius: 20px;
-            backdrop-filter: blur(10px); border: 1px solid rgba(255, 192, 203, 0.2);
-            max-width: 700px; text-align: center;
+        .music-player audio {
+            height: 32px;
+            width: 220px;
         }
 
-        .helado-emoji { font-size: 5rem; margin: 20px; }
-        .decor { font-size: 2rem; }
+        /* CORAZONES INFINITOS Y BURBUJAS FLOTANTES POR TODAS PARTES */
+        .floating-bubbles-container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 2;
+        }
+
+        .bubble-tag {
+            position: absolute;
+            background: rgba(62, 39, 35, 0.88);
+            border: 1.5px solid #ffd700;
+            color: #ffca28;
+            padding: 8px 16px;
+            border-radius: 25px;
+            font-size: 0.95rem;
+            font-family: 'Arial', sans-serif;
+            font-weight: bold;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.6);
+            animation: floatBubble 6s ease-in-out infinite alternate;
+        }
+
+        .bubble-tag.purple {
+            background: rgba(123, 31, 162, 0.8);
+            border-color: #ab47bc;
+            color: #f8bbd0;
+        }
+
+        @keyframes floatBubble {
+            0% { transform: translateY(0px) rotate(-2deg); }
+            100% { transform: translateY(-18px) rotate(3deg); }
+        }
+
+        /* SECCIONES EXTENDIDAS */
+        .page-section {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 110px 20px;
+            position: relative;
+            border-bottom: 2px solid rgba(255, 215, 0, 0.15);
+        }
+
+        .hero-section {
+            background: radial-gradient(circle at center, #4e342e 0%, #1b0c1e 100%);
+        }
+
+        /* LLUVIAS DE FLORES Y TULIPANES */
+        .flower-rain {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .falling-flower {
+            position: absolute;
+            font-size: 3rem;
+            animation: floatFlower 4s ease-in-out infinite alternate;
+        }
+
+        @keyframes floatFlower {
+            0% { transform: translateY(0) rotate(0deg); }
+            100% { transform: translateY(-20px) rotate(15deg); }
+        }
+
+        .content-box {
+            position: relative;
+            z-index: 10;
+            max-width: 950px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 3.8rem;
+            margin-bottom: 15px;
+            color: #ffd700;
+            text-shadow: 0 0 30px rgba(255, 215, 0, 0.7);
+        }
+
+        .subtitle-name {
+            font-size: 2.3rem;
+            color: #ab47bc;
+            margin-bottom: 25px;
+            font-family: 'Arial', sans-serif;
+            font-weight: bold;
+            letter-spacing: 3px;
+            text-shadow: 0 0 15px rgba(171, 71, 188, 0.6);
+        }
+
+        p {
+            font-size: 1.3rem;
+            line-height: 1.9;
+            color: #f3e5f5;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            z-index: 10;
+            font-size: 1.15rem;
+            color: #ffd700;
+            letter-spacing: 1.5px;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-12px); }
+            60% { transform: translateY(-6px); }
+        }
+
+        /* GALERÍA POLAROID MASIVA CON MARCOS DE LUJO */
+        .polaroid-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 35px;
+            max-width: 1300px;
+            margin-top: 35px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .polaroid {
+            background: #fcf8f2;
+            padding: 14px 14px 45px 14px;
+            border-radius: 6px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.8);
+            width: 270px;
+            color: #333;
+            transform: rotate(-3deg);
+            transition: transform 0.3s ease;
+            border: 3px solid #ffd700;
+        }
+
+        .polaroid:nth-child(even) { transform: rotate(3deg); }
+        .polaroid:hover { transform: scale(1.06) rotate(0deg); z-index: 20; }
+
+        .polaroid img {
+            width: 100%;
+            height: 260px;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+
+        .polaroid p {
+            margin-top: 15px;
+            font-family: 'Brush Script MT', cursive, sans-serif;
+            font-size: 1.45rem;
+            color: #7b1fa2;
+        }
+
+        /* TARJETAS VINTAGE */
+        .card-vintage {
+            background: rgba(62, 39, 35, 0.9);
+            border: 3px solid #ffd700;
+            padding: 50px;
+            border-radius: 30px;
+            backdrop-filter: blur(20px);
+            box-shadow: 0 25px 60px rgba(0,0,0,0.9);
+            max-width: 900px;
+            text-align: left;
+            position: relative;
+            z-index: 10;
+        }
+
+        .card-vintage h2 {
+            color: #ffd700;
+            text-align: center;
+            margin-top: 0;
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            text-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+        }
+
+        .card-vintage p {
+            font-size: 1.25rem;
+            line-height: 2;
+            color: #f8bbd0;
+            margin-bottom: 25px;
+            text-align: justify;
+        }
+
+        .spam-amor {
+            font-size: 1.6rem;
+            color: #ffca28;
+            font-weight: bold;
+            margin: 20px 0;
+            text-shadow: 0 0 10px rgba(255,202,40,0.6);
+        }
     </style>
 </head>
 <body>
 
-    <!-- Música -->
-    <audio id="audio" autoplay loop><source src="https://cdnsons.com/download/post-malone-swae-lee-sunflower-spider-man-into-the-spider-verse-official-lyric-video_1720888628.mp3" type="audio/mpeg"></audio>
-
-    <!-- SECCIÓN 1: PORTADA -->
-    <div class="section morado">
-        <h1>Para Angi, dueña de mi universo 🌌</h1>
-        <p>Hecho por Miguel con el alma y el corazón.</p>
-        <div class="decor">🌷✨🌻🕷️</div>
+    <!-- Reproductor de música -->
+    <div class="music-player">
+        <span style="font-size: 1.4rem;">🌻🎵🌷💖</span>
+        <audio controls autoplay loop>
+            <source src="https://cdnsons.com/download/post-malone-swae-lee-sunflower-spider-man-into-the-spider-verse-official-lyric-video_1720888628.mp3" type="audio/mpeg">
+            Tu navegador no soporta audio.
+        </audio>
     </div>
 
-    <!-- SECCIÓN 2: LA CARTA -->
-    <div class="section vintage">
-        <div class="card-detalle">
-            <h2>Retumbando tu corazón 💌</h2>
-            <p>Quería hacerte algo que se sintiera real, que no fuera solo una tarjeta genérica, sino retumbar tu corazón. Pensé en tus flores favoritas, en los tulipanes que hasta ellas te dicen lo hermosa y brillante que eres. Eres asombrosa como Spider-Man; te admiro mucho porque, a pesar de tantas heridas, te sigues levantando y eso habla más que suficiente de ti, mi amor.</p>
-            <p>A veces me pongo a pensar en cómo Dios permitió conocernos... las noches no son suficientes para agradecerle. Tienes una inteligencia y honestidad que vuelve cualquier momento en lo mejor de mi vida.</p>
+    <!-- SECCIÓN 1: PORTADA PRINCIPAL -->
+    <div class="page-section hero-section">
+        <div class="floating-bubbles-container">
+            <div class="bubble-tag" style="top: 12%; left: 6%;">💖 TE AMOOOOOOOOOOOOOOOOOOOOOO 💖</div>
+            <div class="bubble-tag purple" style="top: 22%; right: 8%;">✨ TE ADOROOOOOOOOOOOOO ✨</div>
+            <div class="bubble-tag" style="bottom: 18%; left: 10%;">🌷 MI BEBITA HERMOSAAAAAA 🌷</div>
+            <div class="bubble-tag purple" style="bottom: 28%; right: 12%;">🍦 Eres como jugador del 2015 🍦</div>
+        </div>
+
+        <div class="flower-rain">
+            <div class="falling-flower" style="left: 5%; top: 10%;">🌷</div>
+            <div class="falling-flower" style="left: 90%; top: 18%;">💐</div>
+            <div class="falling-flower" style="left: 15%; top: 75%;">🌻</div>
+            <div class="falling-flower" style="left: 85%; top: 80%;">💖</div>
+            <div class="falling-flower" style="left: 50%; top: 5%;">🌹</div>
+        </div>
+
+        <div class="content-box">
+            <h1>Para la dueña absoluta de mi universo 🌌✨</h1>
+            <div class="subtitle-name">MIGUEL para ANGI 🌻🕷️🌷</div>
+            <p>Dicen que en todo el multiverso existen infinitas realidades, pero en cualquiera de ellas, mi lugar favorito, mi paz y mi destino siempre serías tú, mi amor. No quiero ser tu prioridad, quiero ser tu compañero con quien compartas todos tus logros conmigo. Eres mi refugio, mi gran amor y mi multiverso entero.</p>
+            
+            <div class="spam-amor">TE AMOOOOOSSSS MUCHOOOO ❤️💖</div>
+            <div class="spam-amor">TE AMOOOOOOO DEMASIADOOOOOOOO 💛🌻</div>
+        </div>
+        <div class="scroll-indicator">↓ Desliza para explorar nuestro multiverso de amor ↓</div>
+    </div>
+
+    <!-- SECCIÓN 2: CUMPLEAÑOS 16 CON TORTA Y VELAS -->
+    <div class="page-section" style="background: linear-gradient(180deg, #1b0c1e, #3e2723);">
+        <div class="floating-bubbles-container">
+            <div class="bubble-tag purple" style="top: 8%; left: 12%;">🎂 ¡FELIZ CUMPLEAÑOS A LA NIÑA MÁS HERMOSA DEL MUNDOOOOOOO! 🎂</div>
+            <div class="bubble-tag" style="top: 25%; right: 10%;">🕯️ ¡CUMPLE 16 CON VELITAS! 🕯️</div>
+            <div class="bubble-tag purple" style="bottom: 15%; left: 15%;">👑 MI NOVIA HERMOSAAAAAAAAAA 👑</div>
+        </div>
+
+        <div class="card-vintage" style="text-align: center;">
+            <h2>¡Feliz Cumpleaños 16, mi niña hermosa! 🎂✨🍰</h2>
+            
+            <!-- Torta de vainilla grande y decoración -->
+            <div style="font-size: 5rem; margin: 20px 0; text-shadow: 0 0 25px rgba(255,215,0,0.8);">
+                🎂🍰🕯️✨
+            </div>
+            <p style="text-align: center; font-size: 1.4rem; color: #ffd700; font-weight: bold;">
+                ¡Una hermosa torta de vainilla con velas encendidas para celebrar tus 16 años, mi amor!
+            </p>
+
+            <p style="text-align: justify; margin-top: 20px;">
+                A veces me pongo a pensar en cómo Dios permitió conocernos, que los días y las noches no son lo suficientemente eternas como para agradecerle por cruzar nuestros caminos. Tienes una forma de ver las cosas, una inteligencia, una nobleza y una honestidad inigualable que vuelve cualquier segundo ordinario en el mejor momento de mi vida. Hoy cumples 16 años llenando mi vida de una luz incomparable. Cuando veo tus fotos es como ver a jugadores del 2015: únicas, legendarias, inigualables e imposibles de superar. Eres bellísima, inteligente, brillante, lista y graciosa. Mi celosita, mi enojona hermosa, te amo con toda el alma.
+            </p>
+            <div class="spam-amor">TE AMOOOOOOOOO MUUUUCHOTEEEEE 🌷💖</div>
+            <div class="spam-amor">TE AMOOOOOOOOOOOOOOOOO MUCHISIMO 💛</div>
         </div>
     </div>
 
-    <!-- SECCIÓN 3: NUESTRA HISTORIA -->
-    <div class="section morado">
-        <h2>Nuestro viaje multiversal 🕷️</h2>
-        <div style="display: flex; flex-wrap: wrap; justify-content: center;">
-            <img class="foto-estilo" src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=500" alt="Foto">
-            <img class="foto-estilo" src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=500" alt="Foto">
+    <!-- SECCIÓN 3: SPIDER-MAN Y SPIDER-GWEN JUNTOS -->
+    <div class="page-section" style="background: #250e2a;">
+        <div class="floating-bubbles-container">
+            <div class="bubble-tag" style="top: 10%; left: 18%;">🕷️ Spider-Man & Spider-Gwen 🕷️</div>
+            <div class="bubble-tag purple" style="bottom: 12%; right: 15%;">❤️ Juntos en todo multiverso ❤️</div>
         </div>
-        <p>Con todos tus defectos, yo me quedo con todos ellos. Porque no te quiero perfecta, te quiero real, te quiero mía.</p>
+
+        <div class="card-vintage" style="text-align: center;">
+            <h2>Nuestro Multiverso: Spider-Man y Spider-Gwen 🕷️🕸️✨</h2>
+            
+            <div style="font-size: 4.5rem; margin: 20px 0;">
+                🕷️❤️🕸️🌷🌻
+            </div>
+
+            <p style="text-align: justify;">
+                Así como Spider-Man y Spider-Gwen cruzan dimensiones y universos enteros, nosotros dos estamos conectados por un hilo invisible que va más allá del tiempo. No importa el lugar ni la realidad, mi lugar seguro siempre estará a tu lado, protegiéndote, amándote y celebrando cada uno de tus triunfos.
+            </p>
+            <div class="spam-amor">TE AMOOOOOOOOOOOOOOOOOOOOOOO MUCHO MUCHO 💖🕷️</div>
+        </div>
     </div>
 
-    <!-- SECCIÓN 4: HELADOS Y DULZURA -->
-    <div class="section vintage">
-        <h2>Días dulces como tú 🍦</h2>
-        <div class="helado-emoji">🍦🍨🍧</div>
-        <p>Porque la vida sin ti sería como un verano sin helado: le faltaría todo el sabor. Prometo invitarte todos los helados del mundo y compartir cada antojo contigo, en este o en cualquier multiverso.</p>
+    <!-- SECCIÓN 4: GALERÍA POLAROID MASIVA CON TUS FOTOS Y HELADOS -->
+    <div class="page-section" style="background: #321338;">
+        <div class="floating-bubbles-container">
+            <div class="bubble-tag purple" style="top: 8%; left: 10%;">📸 Eres belliiiiiiisimaaaaaaaaa 📸</div>
+            <div class="bubble-tag" style="top: 20%; right: 12%;">🍦 Helados, risas y amor 🍦</div>
+            <div class="bubble-tag purple" style="bottom: 10%; right: 18%;">💖 Mi chiquita preciosa 💖</div>
+        </div>
+
+        <div class="content-box" style="max-width: 1300px; margin-bottom: 25px;">
+            <h2 style="color: #ffd700; font-size: 2.8rem;">Tus fotos hermosas y ramos de tulipanes 🌷✨</h2>
+            <p style="color: #ce93d8; font-size: 1.2rem;">Siempre miro tus fotos en cada ocasión porque eres perfecta.</p>
+        </div>
+
+        <div class="polaroid-grid">
+            <!-- Foto 1 -->
+            <div class="polaroid">
+                <img src="image_34101c.jpg" alt="Angi">
+                <p>Mi luz más hermosa 🌻❤️</p>
+            </div>
+            <!-- Foto 2 -->
+            <div class="polaroid">
+                <img src="image_341018.jpg" alt="Angi">
+                <p>Mi chiquita preciosa 🌷</p>
+            </div>
+            <!-- Foto 3 -->
+            <div class="polaroid">
+                <img src="image_340ffd.jpg" alt="Angi">
+                <p>Guapísima y brillante ✨</p>
+            </div>
+            <!-- Foto 4 -->
+            <div class="polaroid">
+                <img src="image_340fdb.jpg" alt="Angi">
+                <p>Bella eres bellísima 🤎</p>
+            </div>
+            <!-- Foto 5 -->
+            <div class="polaroid">
+                <img src="image_340fc2.jpg" alt="Angi">
+                <p>Eres linda bonita 👑</p>
+            </div>
+            <!-- Foto 6 -->
+            <div class="polaroid">
+                <img src="image_34085f.png" alt="Recuerdo especial">
+                <p>Tú y yo por siempre 🍦💖</p>
+            </div>
+            <!-- Foto 7 -->
+            <div class="polaroid">
+                <img src="image_340fdf.jpg" alt="Miguel">
+                <p>Tu novio que te ama ❤️</p>
+            </div>
+            <!-- Foto 8 -->
+            <div class="polaroid">
+                <img src="image_340ff9.jpg" alt="Miguel">
+                <p>Siempre pensando en ti 🤎</p>
+            </div>
+        </div>
+
+        <div class="spam-amor" style="margin-top: 30px;">TE AMOOOOOOOOOOOOOOOOOOOOOOO MUCHO MUCHO 💛🌷</div>
     </div>
 
-    <!-- SECCIÓN 5: KDRAMAS Y NOCHES LARGAS -->
-    <div class="section morado">
-        <h2>Nuestras maratones 🎬</h2>
-        <p>Más allá de cualquier K-Drama, nuestra historia es la que más me gusta ver en bucle. Gracias por aguantar mis locuras mientras vemos tus series favoritas. Eres mi protagonista favorita, Angi.</p>
-        <img class="foto-estilo" style="transform: rotate(2deg);" src="https://images.unsplash.com/photo-1594909122845-11baa439b7bf?w=500" alt="Kdrama">
+    <!-- SECCIÓN 5: CARTA DE COMPAÑERO DE LOGROS -->
+    <div class="page-section" style="background: #3e2723;">
+        <div class="floating-bubbles-container">
+            <div class="bubble-tag" style="top: 15%; right: 15%;">🎯 Tu compañero de logros 🎯</div>
+            <div class="bubble-tag purple" style="bottom: 20%; left: 12%;">🌹 Te adorooooooooo 🌹</div>
+        </div>
+
+        <div class="card-vintage">
+            <h2>De Miguel para mi compañera de vida 💌</h2>
+            <p>
+                Quería hacerte algo que se sintiera real, que no fuera solo una tarjeta genérica, sino <strong>retumbar tu corazón</strong>. No quiero ser solo un detalle pasajero; quiero ser tu compañero con quien compartas todos tus logros conmigo. Cada meta que alcances, cada examen que apruebes en tu carrera, cada sueño que cumplas quiero aplaudírtelo en primera fila. 🌷🕷️✨
+            </p>
+            <p>
+                Eres inteligente, eres brillante, eres lista y graciosa. Mi celosita, mi enojona favorita, te amo de aquí hasta el infinito. Siempre miro tus fotos en cada ocasión y me enamoro más y más.
+            </p>
+            <div class="spam-amor" style="text-align: center;">TE AMOOOOOSSSS MUCHOOOO 💖✨</div>
+            <div class="spam-amor" style="text-align: center;">TE ADOROOOOOOOOOOOOO 💛</div>
+        </div>
     </div>
 
-    <!-- SECCIÓN 6: PROMESA DE AMOR -->
-    <div class="section vintage">
-        <h2>Te prometo... 💖</h2>
-        <ul style="text-align: left; font-size: 1.2rem; line-height: 2;">
-            <li>🌻 Celebrarte cada segundo de tu existencia.</li>
-            <li>🕷️ Ser tu apoyo en cada caída y cada victoria.</li>
-            <li>🌷 Amarte con todos tus defectos, porque me encantan.</li>
-            <li>✨ Estar contigo en este y en cualquier multiverso.</li>
-        </ul>
-    </div>
+    <!-- SECCIÓN 6: CIERRE MASIVO CON CORAZONES INFINITOS -->
+    <div class="page-section" style="background: radial-gradient(circle at center, #4e342e 0%, #1b0c1e 100%); border-bottom: none;">
+        <div class="floating-bubbles-container">
+            <div class="bubble-tag purple" style="top: 15%; left: 10%;">💖 Corazones infinitos 💖</div>
+            <div class="bubble-tag" style="top: 25%; right: 10%;">🌷 ¡Feliz Cumpleaños 16! 🌷</div>
+            <div class="bubble-tag purple" style="bottom: 20%; left: 15%;">👑 Mi bebita hermosa 👑</div>
+        </div>
 
-    <!-- SECCIÓN 7: DEDICATORIA FINAL -->
-    <div class="section morado">
-        <h1 style="font-size: 4rem;">¡TE AMOOOOOOO MUUUUUUUCHOOOOOOO!</h1>
-        <p style="font-size: 1.5rem;">Eres mi paz, mi caos y mi todo. Feliz cumpleaños, mi vida hermosa.</p>
-    </div>
-
-    <!-- SECCIÓN 8: CIERRE -->
-    <div class="section vintage">
-        <div class="decor">🌻🌷🕷️🍦🎬✨</div>
-        <p>MIGUEL ❤️ ANGI</p>
+        <div class="content-box">
+            <span style="font-size: 4rem;">🌻🌷🕷️🍦🎂💖✨</span>
+            <h1 style="font-size: 3.5rem; color: #ffca28; text-shadow: 0 0 40px rgba(255, 202, 40, 0.8); margin: 25px 0;">
+                ¡TE AMOOOOOOO MUUUUUUUUUCHOOOOOOO!
+            </h1>
+            <div class="spam-amor" style="font-size: 2rem;">TE AMOOOOOOOOOOOOOOOOO MUCHISIMO</div>
+            <div class="spam-amor" style="font-size: 2.2rem; color: #ab47bc;">TE ADOROOOOOOOOOOOOO CON TODO MI SER</div>
+            
+            <p style="color: #ffd700; font-size: 1.6rem; margin-top: 15px; font-family: 'Georgia', serif;">
+                Eres mi luz más hermosa, mi chiquita preciosa, mi compañera de logros y mi multiverso entero.
+            </p>
+            <p style="color: #f8bbd0; font-size: 1.3rem; margin-top: 10px;">
+                Por siempre y para siempre tuyo, <strong>Miguel</strong> 🤎👑🌷🕷️💖
+            </p>
+        </div>
     </div>
 
 </body>
