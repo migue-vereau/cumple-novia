@@ -2,327 +2,108 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Para Angi, la dueña de mi universo 🌻🕷️🌷</title>
+    <title>Para Angi, el universo entero 🌌🌷🌻</title>
     <style>
-        * {
-            box-sizing: border-box;
-            scroll-behavior: smooth;
-        }
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,700&family=Montserrat:wght@300;400;600&display=swap');
 
         body {
-            margin: 0;
-            padding: 0;
-            background: linear-gradient(135deg, #12031a 0%, #1f092b 50%, #2a081c 100%);
-            font-family: 'Georgia', serif;
-            color: #fce4ec;
-            overflow-x: hidden;
-            text-align: center;
+            margin: 0; background: #0d0215; color: #fff;
+            font-family: 'Montserrat', sans-serif; overflow-x: hidden;
         }
 
-        /* Reproductor de música flotante con Sunflower */
-        .music-player {
-            position: fixed;
-            bottom: 25px;
-            right: 25px;
-            z-index: 1000;
-            background: rgba(45, 15, 60, 0.9);
-            backdrop-filter: blur(15px);
-            padding: 12px 20px;
-            border-radius: 40px;
-            border: 1.5px solid rgba(255, 215, 0, 0.5);
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+        .section { 
+            padding: 100px 5%; min-height: 90vh; position: relative;
+            border-bottom: 2px solid rgba(255, 215, 0, 0.1);
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
         }
 
-        .music-player audio {
-            height: 32px;
-            width: 220px;
+        h1, h2 { font-family: 'Playfair Display', serif; color: #ffd700; }
+        .morado { background: radial-gradient(circle at center, #2e0838 0%, #0d0215 100%); }
+        .vintage { background: #1a0b2e; }
+
+        .foto-estilo { 
+            width: 300px; border: 8px solid #fdfdfd; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5); 
+            margin: 20px; transform: rotate(-3deg); transition: 0.3s;
+        }
+        .foto-estilo:hover { transform: scale(1.05) rotate(0deg); }
+
+        .card-detalle {
+            background: rgba(255, 255, 255, 0.05); padding: 40px; border-radius: 20px;
+            backdrop-filter: blur(10px); border: 1px solid rgba(255, 192, 203, 0.2);
+            max-width: 700px; text-align: center;
         }
 
-        /* ESTRUCTURA DE 8 SECCIONES / PÁGINAS LARGAS */
-        .page-section {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 80px 20px;
-            position: relative;
-            border-bottom: 1px solid rgba(255, 215, 0, 0.1);
-        }
-
-        /* SECCIÓN 1: PORTADA PRINCIPAL */
-        .hero-section {
-            background: radial-gradient(circle at center, #2e0838 0%, #12031a 100%);
-        }
-
-        .flower-scene {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-            pointer-events: none;
-        }
-
-        .flower {
-            position: absolute;
-            font-size: 3.2rem;
-            animation: floatFlower 5s ease-in-out infinite alternate;
-        }
-
-        @keyframes floatFlower {
-            0% { transform: translateY(0) rotate(0deg); }
-            100% { transform: translateY(-15px) rotate(10deg); }
-        }
-
-        .f1 { left: 10%; top: 15%; }
-        .f2 { left: 85%; top: 18%; font-size: 4rem; }
-        .f3 { left: 15%; top: 75%; font-size: 4.5rem; }
-        .f4 { left: 80%; top: 70%; }
-        .f5 { left: 50%; top: 8%; font-size: 3.5rem; }
-
-        .content-box {
-            position: relative;
-            z-index: 10;
-            max-width: 850px;
-            margin: 0 auto;
-        }
-
-        h1 {
-            font-size: 3.5rem;
-            margin-bottom: 15px;
-            color: #ffd700; /* Dorado vintage */
-            text-shadow: 0 0 25px rgba(255, 215, 0, 0.5);
-        }
-
-        .subtitle-name {
-            font-size: 2.2rem;
-            color: #ff80ab;
-            margin-bottom: 20px;
-            font-family: 'Arial', sans-serif;
-            font-weight: bold;
-            letter-spacing: 2px;
-        }
-
-        p {
-            font-size: 1.3rem;
-            line-height: 1.8;
-            color: #f3e5f5;
-            font-family: 'Arial', sans-serif;
-        }
-
-        .scroll-indicator {
-            position: absolute;
-            bottom: 25px;
-            z-index: 10;
-            font-size: 1.1rem;
-            color: #ffd700;
-            letter-spacing: 1px;
-            animation: bounce 2s infinite;
-        }
-
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-            40% { transform: translateY(-10px); }
-            60% { transform: translateY(-5px); }
-        }
-
-        /* SECCIÓN 2: EL INICIO DE TODO */
-        .section-bg-2 { background: linear-gradient(180deg, #12031a, #1a0626); }
-
-        /* SECCIÓN 3: GALERÍA POLAROID VINTAGE */
-        .polaroid-grid {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 40px;
-            max-width: 1100px;
-            margin-top: 30px;
-        }
-
-        .polaroid {
-            background: #fcf8f2;
-            padding: 15px 15px 40px 15px;
-            border-radius: 4px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.7);
-            width: 280px;
-            color: #333;
-            transform: rotate(-2deg);
-            transition: transform 0.3s ease;
-        }
-
-        .polaroid:nth-child(even) { transform: rotate(3deg); }
-        .polaroid:hover { transform: scale(1.05) rotate(0deg); }
-
-        .polaroid img {
-            width: 100%;
-            height: 280px;
-            object-fit: cover;
-            border-radius: 2px;
-        }
-
-        .polaroid p {
-            margin-top: 15px;
-            font-family: 'Brush Script MT', cursive, sans-serif;
-            font-size: 1.5rem;
-            color: #ad1457;
-        }
-
-        /* SECCIÓN 4, 5, 6, 7: CARTA Y TEXTOS PROFUNDOS */
-        .card-vintage {
-            background: rgba(35, 12, 50, 0.75);
-            border: 1.5px solid rgba(255, 215, 0, 0.3);
-            padding: 50px;
-            border-radius: 20px;
-            backdrop-filter: blur(15px);
-            box-shadow: 0 20px 50px rgba(0,0,0,0.8);
-            max-width: 800px;
-            text-align: left;
-        }
-
-        .card-vintage h2 {
-            color: #ffd700;
-            text-align: center;
-            margin-top: 0;
-            font-size: 2.2rem;
-            margin-bottom: 25px;
-        }
-
-        .card-vintage p {
-            font-size: 1.15rem;
-            line-height: 1.9;
-            color: #f8bbd0;
-            margin-bottom: 20px;
-            text-align: justify;
-        }
-
-        /* SECCIÓN 8: CIERRE MASIVO */
-        .final-hero {
-            background: radial-gradient(circle at center, #360c4a 0%, #12031a 100%);
-        }
-
-        .big-love-text {
-            font-size: 3rem;
-            color: #ff4081;
-            font-weight: bold;
-            text-shadow: 0 0 30px rgba(255, 64, 129, 0.6);
-            margin: 20px 0;
-        }
+        .helado-emoji { font-size: 5rem; margin: 20px; }
+        .decor { font-size: 2rem; }
     </style>
 </head>
 <body>
 
-    <!-- Reproductor de música (Sunflower - Post Malone / Swae Lee audio directo) -->
-    <div class="music-player">
-        <span style="font-size: 1.4rem;">🌻🎵</span>
-        <audio controls autoplay loop>
-            <source src="https://cdnsons.com/download/post-malone-swae-lee-sunflower-spider-man-into-the-spider-verse-official-lyric-video_1720888628.mp3" type="audio/mpeg">
-            Tu navegador no soporta audio.
-        </audio>
+    <!-- Música -->
+    <audio id="audio" autoplay loop><source src="https://cdnsons.com/download/post-malone-swae-lee-sunflower-spider-man-into-the-spider-verse-official-lyric-video_1720888628.mp3" type="audio/mpeg"></audio>
+
+    <!-- SECCIÓN 1: PORTADA -->
+    <div class="section morado">
+        <h1>Para Angi, dueña de mi universo 🌌</h1>
+        <p>Hecho por Miguel con el alma y el corazón.</p>
+        <div class="decor">🌷✨🌻🕷️</div>
     </div>
 
-    <!-- PÁGINA 1: PORTADA -->
-    <div class="page-section hero-section">
-        <div class="flower-scene">
-            <div class="flower f1">🌷</div>
-            <div class="flower f2">🌻</div>
-            <div class="flower f3">🌸</div>
-            <div class="flower f4">🌷</div>
-            <div class="flower f5">🌻</div>
-        </div>
-        <div class="content-box">
-            <h1>Para la dueña de mi universo 🌌✨</h1>
-            <div class="subtitle-name">MIGUEL para ANGI 🌻🕷️🌷</div>
-            <p>Dicen que en todo el multiverso existen infinitas realidades, pero en cualquiera de ellas, mi lugar favorito siempre serías tú.</p>
-        </div>
-        <div class="scroll-indicator">↓ Desliza hacia abajo (8 Secciones de amor puro) ↓</div>
-    </div>
-
-    <!-- PÁGINA 2: EL INICIO DE NUESTRA HISTORIA -->
-    <div class="page-section section-bg-2">
-        <div class="content-box">
-            <h2 style="color: #ffd700; font-size: 2.5rem;">Una casualidad divina 🕊️✨</h2>
-            <p style="text-align: center; max-width: 700px; margin: 20px auto;">
-                A veces me pongo a pensar en cómo Dios permitió conocernos, que los días y las noches no son lo suficientemente eternas como para agradecerle por haberte cruzado en mi camino. 🕰️💫
-            </p>
+    <!-- SECCIÓN 2: LA CARTA -->
+    <div class="section vintage">
+        <div class="card-detalle">
+            <h2>Retumbando tu corazón 💌</h2>
+            <p>Quería hacerte algo que se sintiera real, que no fuera solo una tarjeta genérica, sino retumbar tu corazón. Pensé en tus flores favoritas, en los tulipanes que hasta ellas te dicen lo hermosa y brillante que eres. Eres asombrosa como Spider-Man; te admiro mucho porque, a pesar de tantas heridas, te sigues levantando y eso habla más que suficiente de ti, mi amor.</p>
+            <p>A veces me pongo a pensar en cómo Dios permitió conocernos... las noches no son suficientes para agradecerle. Tienes una inteligencia y honestidad que vuelve cualquier momento en lo mejor de mi vida.</p>
         </div>
     </div>
 
-    <!-- PÁGINA 3: GALERÍA FOTOGRÁFICA (TUS MEJORES MOMENTOS) -->
-    <div class="page-section" style="background: #150420;">
-        <div class="content-box" style="max-width: 1200px;">
-            <h2 style="color: #ffd700; font-size: 2.5rem;">Tus mejores momentos, mi persona favorita 📸✨</h2>
-            <p style="color: #ce93d8; margin-bottom: 20px;">Cada foto tuya es arte puro en este multiverso.</p>
-            
-            <div class="polaroid-grid">
-                <div class="polaroid">
-                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=500&q=80" alt="Angi">
-                    <p>Tu sonrisa ilumina todo 🌻</p>
-                </div>
-                <div class="polaroid">
-                    <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=500&q=80" alt="Angi">
-                    <p>Mi Spider-Girl favorita 🕷️❤️</p>
-                </div>
-                <div class="polaroid">
-                    <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=500&q=80" alt="Angi">
-                    <p>Arte puro y tulipanes 🌷</p>
-                </div>
-            </div>
+    <!-- SECCIÓN 3: NUESTRA HISTORIA -->
+    <div class="section morado">
+        <h2>Nuestro viaje multiversal 🕷️</h2>
+        <div style="display: flex; flex-wrap: wrap; justify-content: center;">
+            <img class="foto-estilo" src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=500" alt="Foto">
+            <img class="foto-estilo" src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=500" alt="Foto">
         </div>
+        <p>Con todos tus defectos, yo me quedo con todos ellos. Porque no te quiero perfecta, te quiero real, te quiero mía.</p>
     </div>
 
-    <!-- PÁGINA 4: LA CARTA PARTE 1 (TUS PALABRAS EXACTAS) -->
-    <div class="page-section" style="background: #180524;">
-        <div class="card-vintage">
-            <h2>De Miguel para Angi 💌</h2>
-            <p>
-                Quería hacerte algo que se sintiera real, que no fuera solo una tarjeta genérica, sino <strong>retumbar tu corazón</strong>. Pensé en tus flores favoritas, en los tulipanes que hasta ellas te dicen lo hermosa y brillante que eres y por supuesto, eres asombrosa como Spider-Man. Te admiro mucho porque a pesar de tantas heridas te sigues levantando y sigues, y eso habla más que suficiente de ti, mi amor. 🌷🕷️
-            </p>
-        </div>
+    <!-- SECCIÓN 4: HELADOS Y DULZURA -->
+    <div class="section vintage">
+        <h2>Días dulces como tú 🍦</h2>
+        <div class="helado-emoji">🍦🍨🍧</div>
+        <p>Porque la vida sin ti sería como un verano sin helado: le faltaría todo el sabor. Prometo invitarte todos los helados del mundo y compartir cada antojo contigo, en este o en cualquier multiverso.</p>
     </div>
 
-    <!-- PÁGINA 5: LA CARTA PARTE 2 -->
-    <div class="page-section" style="background: #1c062c;">
-        <div class="card-vintage">
-            <h2>Lo que significas para mí 🌟</h2>
-            <p>
-                Tienes una forma de ver las cosas, una inteligencia y una honestidad que vuelve cualquier momento en lo mejor de mi vida. Gracias por cada risa, por aguantar mis locuras y por ser esa paz que uno siempre busca en medio del caos. 🌻💛
-            </p>
-        </div>
+    <!-- SECCIÓN 5: KDRAMAS Y NOCHES LARGAS -->
+    <div class="section morado">
+        <h2>Nuestras maratones 🎬</h2>
+        <p>Más allá de cualquier K-Drama, nuestra historia es la que más me gusta ver en bucle. Gracias por aguantar mis locuras mientras vemos tus series favoritas. Eres mi protagonista favorita, Angi.</p>
+        <img class="foto-estilo" style="transform: rotate(2deg);" src="https://images.unsplash.com/photo-1594909122845-11baa439b7bf?w=500" alt="Kdrama">
     </div>
 
-    <!-- PÁGINA 6: DEFECTOS Y AMOR SINCERO -->
-    <div class="page-section" style="background: #200733;">
-        <div class="card-vintage">
-            <h2>Con todos tus defectos... 🤎</h2>
-            <p style="font-size: 1.3rem; text-align: center;">
-                ...yo me quedo con todos ellos, sin dudarlo ni un segundo. Porque te amo tal cual eres, con tu luz y tus días grises. 🥀✨
-            </p>
-        </div>
+    <!-- SECCIÓN 6: PROMESA DE AMOR -->
+    <div class="section vintage">
+        <h2>Te prometo... 💖</h2>
+        <ul style="text-align: left; font-size: 1.2rem; line-height: 2;">
+            <li>🌻 Celebrarte cada segundo de tu existencia.</li>
+            <li>🕷️ Ser tu apoyo en cada caída y cada victoria.</li>
+            <li>🌷 Amarte con todos tus defectos, porque me encantan.</li>
+            <li>✨ Estar contigo en este y en cualquier multiverso.</li>
+        </ul>
     </div>
 
-    <!-- PÁGINA 7: PROMESA DE MULTIVERSO -->
-    <div class="page-section" style="background: #25083a;">
-        <div class="card-vintage">
-            <h2>Promesa de amor 🌌</h2>
-            <p>
-                Que este nuevo año de vida te traiga metas cumplidas, momentos inolvidables y mucha felicidad. Te prometo seguir celebrándote, cuidándote y estar contigo en este y en cualquier multiverso. ¡Feliz cumpleaños, mi vida hermosa! 🕷️🌻💫
-            </p>
-        </div>
+    <!-- SECCIÓN 7: DEDICATORIA FINAL -->
+    <div class="section morado">
+        <h1 style="font-size: 4rem;">¡TE AMOOOOOOO MUUUUUUUCHOOOOOOO!</h1>
+        <p style="font-size: 1.5rem;">Eres mi paz, mi caos y mi todo. Feliz cumpleaños, mi vida hermosa.</p>
     </div>
 
-    <!-- PÁGINA 8: CIERRE DEFINITIVO MASIVO -->
-    <div class="page-section final-hero">
-        <div class="content-box">
-            <span style="font-size: 4rem;">🌻🌷🕷️✨</span>
-            <div class="big-love-text">¡TE AMOOOOOOO MUUUUUUUUUCHOOOOOOO!</div>
-            <p style="color: #ffd700; font-size: 1.5rem; margin-top: 15px;">Por siempre tuyo, Miguel 🤎👑</p>
-        </div>
+    <!-- SECCIÓN 8: CIERRE -->
+    <div class="section vintage">
+        <div class="decor">🌻🌷🕷️🍦🎬✨</div>
+        <p>MIGUEL ❤️ ANGI</p>
     </div>
 
 </body>
