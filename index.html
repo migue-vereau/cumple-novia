@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>¡Feliz Cumpleaños, Mi Vida! 🌸</title>
+    <title>Para mi Amor🌸</title>
     <style>
+        /* Estilos para un fondo romántico oscuro */
         body {
             margin: 0;
             padding: 0;
-            background-color: #2b002b;
+            background-color: #1a001a; /* Color vino oscuro */
             height: 100vh;
             display: flex;
             flex-direction: column;
@@ -20,55 +21,101 @@
             text-align: center;
         }
 
+        /* Contenedor para las flores animadas */
+        .flower-scene {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .flower {
+            position: absolute;
+            font-size: 3rem;
+            opacity: 0;
+            animation: bloom 5s ease-in-out forwards;
+        }
+
+        /* Animación de aparición */
+        @keyframes bloom {
+            0% { transform: scale(0) rotate(-180deg); opacity: 0; }
+            50% { transform: scale(1.5) rotate(15deg); opacity: 1; }
+            100% { transform: scale(1) rotate(0deg); opacity: 1; }
+        }
+
+        /* Posiciones aleatorias y tiempos de aparición para las flores */
+        .f1 { left: 15%; top: 20%; animation-delay: 0.5s; }
+        .f2 { left: 30%; top: 70%; animation-delay: 1.5s; font-size: 4rem; }
+        .f3 { left: 50%; top: 40%; animation-delay: 2.5s; font-size: 5rem; }
+        .f4 { left: 70%; top: 15%; animation-delay: 3.5s; }
+        .f5 { left: 85%; top: 65%; animation-delay: 4.5s; font-size: 3.5rem; }
+        .f6 { left: 45%; top: 10%; animation-delay: 1.0s; font-size: 2.5rem; }
+        .f7 { left: 10%; top: 50%; animation-delay: 2.0s; font-size: 3rem; }
+        .f8 { left: 75%; top: 45%; animation-delay: 3.0s; font-size: 4rem; }
+        .f9 { left: 55%; top: 80%; animation-delay: 4.0s; font-size: 5rem; }
+        .f10 { left: 25%; top: 30%; animation-delay: 1.8s; font-size: 3.5rem; }
+
+        /* Estilos para el texto (aparece al final) */
+        .message-container {
+            position: relative;
+            z-index: 10;
+            opacity: 0;
+            animation: fadeIn 2s ease-in forwards 6s; /* Aparece 6s después */
+        }
+
         h1 {
             font-size: 2.5rem;
             margin-bottom: 10px;
-            color: #ff99cc;
-            text-shadow: 0 0 15px rgba(255, 153, 204, 0.8);
-            z-index: 10;
+            color: #ff4d94; /* Rosa brillante */
+            text-shadow: 0 0 15px rgba(255, 77, 148, 0.7);
         }
 
         p {
             font-size: 1.2rem;
             max-width: 600px;
             padding: 0 20px;
-            color: #ffcce6;
-            line-height: 1.5;
-            z-index: 10;
+            color: #ffcccc;
+            line-height: 1.6;
         }
 
-        .flowers {
-            display: flex;
-            gap: 20px;
-            font-size: 3rem;
-            margin-bottom: 20px;
-            animation: bloom 3s ease-in-out infinite alternate;
-        }
-
-        @keyframes bloom {
-            from { transform: scale(0.8); opacity: 0.7; }
-            to { transform: scale(1.2); opacity: 1; }
+        @keyframes fadeIn {
+            to { opacity: 1; }
         }
 
         .footer {
-            margin-top: 30px;
-            font-size: 0.8rem;
-            color: #ff99cc;
+            position: absolute;
+            bottom: 10px;
+            font-size: 0.7rem;
+            color: #cc0052;
+            z-index: 10;
         }
     </style>
 </head>
 <body>
 
-    <div class="flowers">
-        <span>🌷</span>
-        <span>🌻</span>
-        <span>🌹</span>
+    <!-- Escena de flores que florecen -->
+    <div class="flower-scene">
+        <div class="flower f1">🌸</div>
+        <div class="flower f2">🌺</div>
+        <div class="flower f3">🌻</div>
+        <div class="flower f4">🌷</div>
+        <div class="flower f5">🌹</div>
+        <div class="flower f6">🪷</div>
+        <div class="flower f7">🌼</div>
+        <div class="flower f8">💐</div>
+        <div class="flower f9">🌸</div>
+        <div class="flower f10">🌻</div>
     </div>
 
-    <h1>¡Feliz Cumpleaños, Mi Vida! 🌸</h1>
-    <p>He preparado este pequeño detalle digital especialmente para ti, porque te mereces el universo entero. Que cada día esté lleno de flores y de tanta felicidad como la que tú me das. ¡Te amo muchísimo!</p>
+    <!-- El mensaje romántico -->
+    <div class="message-container">
+        <h1>¡Feliz Cumpleaños, Mi Vida! 💖</h1>
+        <p>He preparado este pequeño detalle digital especialmente para ti, porque te mereces el universo entero. Que tu día esté lleno de flores y de toda la felicidad del mundo. ¡Te amo muchísimo!</p>
+    </div>
     
-    <div class="footer">Hecho con todo el amor del mundo para ti 💖</div>
+    <div class="footer">Con todo el amor del universo para ti ❤️</div>
 
 </body>
 </html>
