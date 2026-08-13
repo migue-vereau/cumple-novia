@@ -3,45 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Para mi Niña Hermosa 🌻🕷️</title>
+    <title>Para la dueña de mi multiverso 🌻🕷️🌷</title>
     <style>
         * {
             box-sizing: border-box;
+            scroll-behavior: smooth;
         }
 
         body {
             margin: 0;
             padding: 0;
-            background-color: #12081c; /* Fondo espacial/nocturno estilo Spider-Verse */
+            background-color: #0b0210; /* Fondo vintage multiverso muy oscuro */
             font-family: 'Arial', sans-serif;
-            color: #fff;
+            color: #fce4ec;
             overflow-x: hidden;
             text-align: center;
         }
 
-        /* Reproductor de música oculto o discreto */
+        /* Reproductor flotante discreto */
         .music-player {
             position: fixed;
             bottom: 20px;
             right: 20px;
             z-index: 1000;
-            background: rgba(255, 77, 148, 0.2);
-            backdrop-filter: blur(10px);
-            padding: 10px 15px;
-            border-radius: 30px;
-            border: 1px solid rgba(255, 77, 148, 0.4);
+            background: rgba(45, 15, 60, 0.85);
+            backdrop-filter: blur(12px);
+            padding: 10px 18px;
+            border-radius: 35px;
+            border: 1px solid rgba(255, 105, 180, 0.4);
             display: flex;
             align-items: center;
-            gap: 10px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            gap: 12px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.7);
         }
 
         .music-player audio {
-            height: 30px;
-            width: 200px;
+            height: 32px;
+            width: 210px;
         }
 
-        /* Sección 1: Portada con flores animadas */
+        /* SECCIÓN 1: Portada impactante estilo floración */
         .hero-section {
             position: relative;
             width: 100%;
@@ -50,6 +51,7 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            background: radial-gradient(circle at center, #230b30 0%, #0b0210 100%);
         }
 
         .flower-scene {
@@ -64,53 +66,57 @@
 
         .flower {
             position: absolute;
-            font-size: 3rem;
+            font-size: 3.2rem;
             opacity: 0;
-            animation: bloom 4s ease-in-out forwards;
+            animation: bloom 4.5s ease-in-out forwards;
         }
 
         @keyframes bloom {
             0% { transform: scale(0) rotate(-180deg); opacity: 0; }
-            50% { transform: scale(1.4) rotate(10deg); opacity: 1; }
+            50% { transform: scale(1.5) rotate(15deg); opacity: 1; }
             100% { transform: scale(1) rotate(0deg); opacity: 1; }
         }
 
-        /* Posiciones flores portada */
-        .f1 { left: 10%; top: 15%; animation-delay: 0.3s; }
-        .f2 { left: 80%; top: 20%; animation-delay: 0.8s; font-size: 4rem; }
-        .f3 { left: 20%; top: 75%; animation-delay: 1.2s; font-size: 4.5rem; }
-        .f4 { left: 75%; top: 70%; animation-delay: 1.6s; }
-        .f5 { left: 50%; top: 15%; animation-delay: 2.0s; font-size: 3.5rem; }
+        /* Posiciones flores vintage/portada */
+        .f1 { left: 12%; top: 18%; animation-delay: 0.4s; }
+        .f2 { left: 82%; top: 22%; animation-delay: 0.9s; font-size: 4.2rem; }
+        .f3 { left: 18%; top: 72%; animation-delay: 1.3s; font-size: 4.8rem; }
+        .f4 { left: 78%; top: 68%; animation-delay: 1.7s; }
+        .f5 { left: 50%; top: 12%; animation-delay: 2.1s; font-size: 3.8rem; }
+        .f6 { left: 32%; top: 82%; animation-delay: 2.5s; font-size: 3rem; }
 
         .message-container {
             position: relative;
             z-index: 10;
             opacity: 0;
-            animation: fadeIn 2s ease-in forwards 3s;
+            animation: fadeIn 2s ease-in forwards 2.8s;
+            padding: 0 20px;
         }
 
         h1 {
-            font-size: 3rem;
-            margin-bottom: 10px;
-            color: #ff4d94;
-            text-shadow: 0 0 20px rgba(255, 77, 148, 0.8);
+            font-size: 3.4rem;
+            margin-bottom: 12px;
+            color: #ff69b4;
+            text-shadow: 0 0 25px rgba(255, 105, 180, 0.7);
+            font-family: 'Georgia', serif;
         }
 
         p {
-            font-size: 1.3rem;
-            max-width: 650px;
-            padding: 0 20px;
-            color: #ffcccc;
-            line-height: 1.6;
+            font-size: 1.35rem;
+            max-width: 680px;
+            margin: 0 auto;
+            color: #f3e5f5;
+            line-height: 1.7;
         }
 
         .scroll-down {
             position: absolute;
             bottom: 30px;
             z-index: 10;
-            font-size: 1rem;
-            color: #ff99cc;
+            font-size: 1.05rem;
+            color: #e91e63;
             animation: bounce 2s infinite;
+            letter-spacing: 1px;
         }
 
         @keyframes bounce {
@@ -123,39 +129,47 @@
             to { opacity: 1; }
         }
 
-        /* Sección 2: Galería de Fotos (Estilo Scrapbook / Spider-Verse) */
+        /* SECCIÓN 2: Galería Polaroid Vintage & Estética */
         .gallery-section {
             position: relative;
             z-index: 10;
-            padding: 100px 20px;
-            background: linear-gradient(to bottom, #12081c, #1f0c2e);
+            padding: 120px 20px;
+            background: linear-gradient(to bottom, #0b0210, #180824, #12031a);
         }
 
-        .gallery-title {
-            font-size: 2.5rem;
-            color: #ffd700; /* Tono girasol */
-            margin-bottom: 50px;
-            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+        .section-title {
+            font-size: 2.8rem;
+            color: #ffb74d; /* Tono girasol vintage */
+            margin-bottom: 15px;
+            text-shadow: 0 0 15px rgba(255, 183, 77, 0.4);
+            font-family: 'Georgia', serif;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: #ce93d8;
+            margin-bottom: 60px;
         }
 
         .polaroid-grid {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 40px;
-            max-width: 1000px;
+            gap: 45px;
+            max-width: 1100px;
             margin: 0 auto;
         }
 
         .polaroid {
-            background: #fff;
-            padding: 15px 15px 40px 15px;
-            border-radius: 4px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+            background: #fcf8f2; /* Papel fotográfico viejo/vintage */
+            padding: 16px 16px 45px 16px;
+            border-radius: 3px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.6);
             transform: rotate(-3deg);
-            transition: transform 0.3s ease;
-            width: 260px;
+            transition: all 0.4s ease;
+            width: 280px;
             color: #333;
+            position: relative;
         }
 
         .polaroid:nth-child(even) {
@@ -163,117 +177,166 @@
         }
 
         .polaroid:hover {
-            transform: scale(1.05) rotate(0deg);
+            transform: scale(1.06) rotate(0deg);
             z-index: 20;
+            box-shadow: 0 20px 40px rgba(255, 105, 180, 0.3);
         }
 
         .polaroid img {
             width: 100%;
-            height: 280px;
+            height: 300px;
             object-fit: cover;
             border-radius: 2px;
         }
 
         .polaroid p {
-            margin-top: 15px;
+            margin-top: 18px;
             font-family: 'Brush Script MT', cursive, sans-serif;
-            font-size: 1.4rem;
-            color: #d63384;
+            font-size: 1.5rem;
+            color: #ad1457;
         }
 
-        /* Sección 3: Final romántico */
+        /* SECCIÓN 3: Carta abierta y detalles de Tulipanes/Girasoles/Spider-Man */
+        .letter-section {
+            position: relative;
+            z-index: 10;
+            padding: 100px 20px;
+            background: #12031a;
+        }
+
+        .letter-card {
+            background: rgba(30, 10, 45, 0.7);
+            border: 1px solid rgba(255, 105, 180, 0.25);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 55px;
+            border-radius: 25px;
+            backdrop-filter: blur(15px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+            text-align: left;
+        }
+
+        .letter-card h3 {
+            color: #ff80ab;
+            font-size: 2rem;
+            margin-top: 0;
+            font-family: 'Georgia', serif;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .letter-card p {
+            font-size: 1.15rem;
+            color: #f8bbd0;
+            line-height: 1.9;
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+
+        /* SECCIÓN 4: Cierre con dedicatoria final */
         .final-section {
-            padding: 100px 20px 150px 20px;
-            background: #1f0c2e;
+            padding: 100px 20px 140px 20px;
+            background: radial-gradient(circle at center, #230b30 0%, #0b0210 100%);
             position: relative;
             z-index: 10;
         }
 
-        .final-card {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 77, 148, 0.3);
-            max-width: 700px;
-            margin: 0 auto;
-            padding: 40px;
-            border-radius: 20px;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        .badge-box {
+            display: inline-block;
+            background: rgba(255, 183, 77, 0.15);
+            border: 1px solid rgba(255, 183, 77, 0.4);
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-size: 1.2rem;
+            color: #ffe082;
+            margin-bottom: 25px;
         }
 
         .footer {
-            margin-top: 50px;
-            font-size: 0.9rem;
-            color: #ff4d94;
+            margin-top: 40px;
+            font-size: 0.95rem;
+            color: #ba68c8;
+            letter-spacing: 0.5px;
         }
     </style>
 </head>
 <body>
 
-    <!-- Reproductor de música (Canción Sunflower) -->
+    <!-- Reproductor de música (Audio de fondo) -->
     <div class="music-player">
-        <span style="font-size: 1.2rem;">🌻🎵</span>
-        <!-- Usamos un enlace directo a audio de prueba de Sunflower o instrumental -->
+        <span style="font-size: 1.3rem;">🌻🎵</span>
         <audio controls autoplay loop>
             <source src="https://www.bensound.com/bensound-music/bensound-tenderness.mp3" type="audio/mpeg">
             Tu navegador no soporta audio.
         </audio>
     </div>
 
-    <!-- SECCIÓN 1: Portada con flores floreciendo -->
+    <!-- SECCIÓN 1: PORTADA -->
     <div class="hero-section">
         <div class="flower-scene">
-            <div class="flower f1">🌸</div>
+            <div class="flower f1">🌷</div>
             <div class="flower f2">🌻</div>
-            <div class="flower f3">🌺</div>
+            <div class="flower f3">🌸</div>
             <div class="flower f4">🌷</div>
             <div class="flower f5">🌻</div>
+            <div class="flower f6">🌺</div>
         </div>
 
         <div class="message-container">
-            <h1>¡Feliz Cumpleaños, Mi Vida! 💖</h1>
-            <p>Eres mi sol en los días grises, mi universo entero y la casualidad más hermosa de mi vida. Desliza hacia abajo para descubrir más de nosotros... 👇</p>
+            <h1>Para la dueña de mi universo 💖</h1>
+            <p>Dicen que en todo el multiverso existen infinitas realidades, pero en cualquiera de ellas, mi lugar favorito siempre serías tú. Desliza hacia abajo para recorrer nuestro propio camino... 👇</p>
         </div>
 
-        <div class="scroll-down">↓ Desliza hacia abajo ↓</div>
+        <div class="scroll-down">↓ Desliza para explorar más ↓</div>
     </div>
 
-    <!-- SECCIÓN 2: Galería de Fotos (Aquí pondremos sus fotos) -->
+    <!-- SECCIÓN 2: GALERÍA POLAROID (TUS FOTOS) -->
     <div class="gallery-section">
-        <h2 class="gallery-title">Tus mejores momentos, mi persona favorita 📸✨</h2>
+        <h2 class="section-title">Tus mejores momentos, mi persona favorita 📸✨</h2>
+        <div class="section-subtitle">Un vistazo rápido a la casualidad más bonita que me pudo pasar.</div>
         
         <div class="polaroid-grid">
             <!-- Foto 1 -->
             <div class="polaroid">
-                <!-- CAMBIA ESTE ENLACE POR EL DE TU FOTO REAL -->
                 <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=500&q=80" alt="Mi amor">
-                <p>Tu sonrisa lo ilumina todo 🌻</p>
+                <p>Tu sonrisa ilumina todo 🌻</p>
             </div>
 
             <!-- Foto 2 -->
             <div class="polaroid">
-                <!-- CAMBIA ESTE ENLACE POR EL DE TU FOTO REAL -->
                 <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=500&q=80" alt="Mi amor">
                 <p>Mi Spider-Girl favorita 🕷️❤️</p>
             </div>
 
             <!-- Foto 3 -->
             <div class="polaroid">
-                <!-- CAMBIA ESTE ENLACE POR EL DE TU FOTO REAL -->
                 <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=500&q=80" alt="Mi amor">
-                <p>Te amo con todo el multiverso 🌌</p>
+                <p>Arte puro en cada detalle 🌷</p>
             </div>
         </div>
     </div>
 
-    <!-- SECCIÓN 3: Mensaje final -->
-    <div class="final-section">
-        <div class="final-card">
-            <h2 style="color: #ff4d94; margin-top: 0;">Gracias por existir</h2>
-            <p style="font-size: 1.1rem; color: #fff;">
-                Cada segundo a tu lado se siente como una escena sacada de una película increíble. Eres arte, inteligencia y una dulzura inmensa. Prometo seguir celebrando cada uno de tus cumpleaños a tu lado. 
+    <!-- SECCIÓN 3: CARTA ABIERTA (MÁS LARGA, NATURAL Y CON TUS DETALLES) -->
+    <div class="letter-section">
+        <div class="letter-card">
+            <h3>De Migue, para ti 💌</h3>
+            <p>
+                Quería hacerte algo que se sintiera real, que no fuera solo una tarjeta genérica de internet, sino un pequeño rincón digital hecho a tu medida. Pensé en tus flores favoritas, en los tulipanes, en los girasoles que transmiten esa energía tan bonita que tienes, y por supuesto, en toda esa vibra de Spider-Man que tanto te vacila.
             </p>
-            <div class="footer">Hecho con todo el amor del mundo por Migue para ti ❤️🌻</div>
+            <p>
+                A veces me pongo a pensar en cómo la vida nos cruzó y la verdad no paro de agradecerlo. Tienes una forma de ver las cosas, una inteligencia y una chispa que vuelve cualquier día ordinario en algo increíble. Gracias por cada risa, por aguantar mis locuras y por ser esa paz que uno siempre busca.
+            </p>
+            <p>
+                Que este nuevo año de vida te traiga metas cumplidas, momentos inolvidables y mucha felicidad. Te prometo seguir celebrándote, cuidándote y caminando a tu lado en este y en cualquier multiverso. ¡Feliz cumpleaños, mi vida entera! 🌌✨
+            </p>
         </div>
+    </div>
+
+    <!-- SECCIÓN 4: CIERRE -->
+    <div class="final-section">
+        <div class="badge-box">🌷 Girasoles, Tulipanes y Mucho Amor 🌻</div>
+        <h2 style="color: #ff69b4; font-family: 'Georgia', serif; font-size: 2.2rem; margin-top: 10px;">Te amo muchísimo</h2>
+        <div class="footer">Hecho con todo el corazón por Migue para su novia hermosa ❤️</div>
     </div>
 
 </body>
