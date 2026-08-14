@@ -6,12 +6,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Plus+Jakarta+Sans:wght@700;800;900&display=swap" rel="stylesheet">
     <style>
         /* ==========================================================================
-           1. CONFIGURACIÓN GLOBAL Y FONDO DORADO TEXTURIZADO PESADO
+           1. CONFIGURACIÓN GLOBAL Y OPTIMIZACIÓN DE RENDIMIENTO (SIN LAG)
            ========================================================================== */
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
+            transform: translateZ(0); /* Forzar aceleración por hardware */
         }
 
         body, html {
@@ -27,11 +28,10 @@
         }
 
         /* ==========================================================================
-           2. GUIRNALDAS DE BANDERINES MÚLTIPLES (SUPERIOR DOBLE FILA)
+           2. GUIRNALDAS DE BANDERINES
            ========================================================================== */
-        .garland-container {
+        .garland-container, .garland-container-2 {
             position: absolute;
-            top: 0;
             left: 0;
             width: 100%;
             height: 110px;
@@ -40,19 +40,8 @@
             display: flex;
             justify-content: space-around;
         }
-
-        .garland-container-2 {
-            position: absolute;
-            top: 35px;
-            left: 0;
-            width: 100%;
-            height: 110px;
-            pointer-events: none;
-            z-index: 3;
-            display: flex;
-            justify-content: space-around;
-            opacity: 0.85;
-        }
+        .garland-container { top: 0; }
+        .garland-container-2 { top: 35px; opacity: 0.85; }
 
         .pennant {
             width: 0;
@@ -60,27 +49,28 @@
             border-left: 24px solid transparent;
             border-right: 24px solid transparent;
             border-top: 40px solid;
-            filter: drop-shadow(0 6px 12px rgba(0,0,0,0.6));
-            animation: pennantSwing 2s ease-in-out infinite alternate;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.4));
+            animation: pennantSwing 2.5s ease-in-out infinite alternate;
             transform-origin: top center;
+            will-change: transform;
         }
 
-        .p-green { border-top-color: #00e676; animation-delay: 0.1s; }
-        .p-sky { border-top-color: #00b0ff; animation-delay: 0.3s; }
-        .p-yellow { border-top-color: #ffea00; animation-delay: 0.2s; }
-        .p-red { border-top-color: #ff1744; animation-delay: 0.4s; }
-        .p-orange { border-top-color: #ff9100; animation-delay: 0.15s; }
-        .p-blue { border-top-color: #7c4dff; animation-delay: 0.35s; }
-        .p-pink { border-top-color: #ff4081; animation-delay: 0.25s; }
-        .p-cyan { border-top-color: #00e5ff; animation-delay: 0.05s; }
+        .p-green { border-top-color: #00e676; }
+        .p-sky { border-top-color: #00b0ff; }
+        .p-yellow { border-top-color: #ffea00; }
+        .p-red { border-top-color: #ff1744; }
+        .p-orange { border-top-color: #ff9100; }
+        .p-blue { border-top-color: #7c4dff; }
+        .p-pink { border-top-color: #ff4081; }
+        .p-cyan { border-top-color: #00e5ff; }
 
         @keyframes pennantSwing {
-            0% { transform: rotate(-7deg); }
-            100% { transform: rotate(7deg); }
+            0% { transform: rotate(-5deg); }
+            100% { transform: rotate(5deg); }
         }
 
         /* ==========================================================================
-           3. FUEGOS ARTIFICIALES COLOSALES Y BRILLANTES (MULTICOLOR TOTAL)
+           3. FUEGOS ARTIFICIALES MÁS NOTORIOS Y FLUIDOS
            ========================================================================== */
         .sky-storm {
             position: absolute;
@@ -94,27 +84,27 @@
 
         .firework-particle {
             position: absolute;
-            width: 13px;
-            height: 13px;
+            width: 14px;
+            height: 14px;
             border-radius: 50%;
-            animation: explodeMassiveHeavy 1.5s infinite ease-out;
+            animation: explodeFluid 1.2s infinite cubic-bezier(0.1, 0.9, 0.2, 1);
+            will-change: transform, opacity;
         }
 
-        @keyframes explodeMassiveHeavy {
+        @keyframes explodeFluid {
             0% {
-                transform: translate(0, 0) scale(2.5);
+                transform: translate(0, 0) scale(2.2);
                 opacity: 1;
-                box-shadow: 0 0 25px #fff, 0 0 50px #ffea00, 0 0 80px #00e5ff, 0 0 110px #ff1744;
+                box-shadow: 0 0 30px #fff, 0 0 60px #ffea00, 0 0 90px #00e5ff, 0 0 130px #ff1744;
             }
             100% {
                 transform: translate(var(--tx), var(--ty)) scale(0.2);
                 opacity: 0;
-                box-shadow: 0 0 2px transparent;
             }
         }
 
         /* ==========================================================================
-           4. LLUVIA MASIVA DE CONFETI, ESTRELLAS Y SERPENTINAS PESADAS
+           4. LLUVIA DE CONFETI OPTIMIZADA
            ========================================================================== */
         .confetti-rain {
             position: absolute;
@@ -128,19 +118,20 @@
 
         .confetti-piece {
             position: absolute;
-            width: 16px;
-            height: 22px;
-            opacity: 0.95;
-            animation: fallConfettiHeavy 3s infinite linear;
+            width: 14px;
+            height: 20px;
+            opacity: 0.9;
+            animation: fallOptimized 4s infinite linear;
+            will-change: transform;
         }
 
-        @keyframes fallConfettiHeavy {
-            0% { transform: translateY(-10vh) rotate(0deg) translateX(0); opacity: 1; }
-            100% { transform: translateY(110vh) rotate(1080deg) translateX(100px); opacity: 0.3; }
+        @keyframes fallOptimized {
+            0% { transform: translateY(-10vh) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(110vh) rotate(720deg); opacity: 0.2; }
         }
 
         /* ==========================================================================
-           5. LLUVIA DE GLOBOS GIGANTES (AZUL, VERDE, AMARILLO, ROJO, NARANJA, CELESTE)
+           5. GLOBOS FLUIDOS
            ========================================================================== */
         .balloons-storm {
             position: absolute;
@@ -154,32 +145,32 @@
 
         .b-item {
             position: absolute;
-            width: 85px;
-            height: 110px;
+            width: 80px;
+            height: 105px;
             border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
-            animation: stormFloatHeavy 4.2s infinite linear;
-            box-shadow: inset -14px -20px 35px rgba(0,0,0,0.55), 0 0 35px rgba(255,255,255,0.9);
-            opacity: 0.96;
+            animation: balloonFloatSmooth 5s infinite linear;
+            box-shadow: inset -12px -18px 30px rgba(0,0,0,0.4), 0 0 25px rgba(255,255,255,0.8);
+            will-change: transform;
         }
 
         .b-item::after {
             content: "";
             position: absolute;
-            bottom: -22px;
-            left: 40px;
+            bottom: -20px;
+            left: 38px;
             width: 2px;
-            height: 38px;
-            background: rgba(255,255,255,0.95);
+            height: 35px;
+            background: rgba(255,255,255,0.9);
         }
 
-        @keyframes stormFloatHeavy {
-            0% { transform: translateY(115vh) translateX(0) scale(0.9); }
-            50% { transform: translateY(50vh) translateX(40px) scale(1.1); }
-            100% { transform: translateY(-20vh) translateX(-40px) scale(1.25); }
+        @keyframes balloonFloatSmooth {
+            0% { transform: translateY(115vh) translateX(0); }
+            50% { transform: translateY(50vh) translateX(25px); }
+            100% { transform: translateY(-20vh) translateX(-25px); }
         }
 
         /* ==========================================================================
-           6. CONTENEDOR ESCENARIO PRINCIPAL
+           6. ESCENARIO PRINCIPAL
            ========================================================================== */
         .colossal-stage {
             position: relative;
@@ -196,7 +187,7 @@
         }
 
         /* ==========================================================================
-           7. TÍTULO PRINCIPAL (INTACTO Y PERFECTO)
+           7. TÍTULO PRINCIPAL (INTACTO)
            ========================================================================== */
         h1 {
             position: relative;
@@ -210,144 +201,134 @@
             -webkit-text-fill-color: transparent;
             filter: drop-shadow(0 0 25px rgba(0, 0, 0, 0.95)) drop-shadow(0 0 20px rgba(255, 23, 68, 1));
             letter-spacing: 1.5px;
-            animation: textFloatEffect 2.5s ease-in-out infinite alternate;
             pointer-events: auto;
         }
 
-        @keyframes textFloatEffect {
-            0% { transform: translateY(0) scale(1); }
-            100% { transform: translateY(-8px) scale(1.02); }
-        }
-
         /* ==========================================================================
-           8. PASTEL GIGANTE PESADO, DETALLADO Y LLENO DE DECORACIONES
+           8. NUEVO PASTEL DE VAINILLA ELEGANTE Y SOFISTICADO (CERO INFANTIL)
            ========================================================================== */
         .mega-cake {
             position: relative;
             z-index: 10;
-            width: 860px;
-            height: 460px;
+            width: 820px;
+            height: 440px;
             margin: 0 auto;
-            animation: cakeBreathingMega 3s ease-in-out infinite;
-            filter: drop-shadow(0 45px 45px rgba(30,5,0,0.9));
+            filter: drop-shadow(0 35px 35px rgba(20,5,0,0.8));
             pointer-events: auto;
-        }
-
-        @keyframes cakeBreathingMega {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.02); }
         }
 
         .m-tier {
             position: absolute;
             left: 50%;
             transform: translateX(-50%);
-            border-radius: 30px;
+            border-radius: 20px;
         }
 
-        /* Capa Base del Pastel (Gran Tamaño) */
+        /* Capa Base de Vainilla Elegante */
         .tier-base {
             bottom: 0;
-            width: 860px;
-            height: 155px;
-            background: linear-gradient(90deg, #d7ccc8, #fff8e1, #d7ccc8);
-            border: 5px solid #6d4c41;
-            border-bottom: 14px solid #3e2723;
-            box-shadow: inset 0 22px 35px rgba(255,255,255,0.95), inset 0 -22px 35px rgba(62,39,35,0.6);
+            width: 820px;
+            height: 150px;
+            background: linear-gradient(90deg, #e4c280, #fff3d1, #e4c280);
+            border: 4px solid #b38f45;
+            border-bottom: 12px solid #5a3e1b;
+            box-shadow: inset 0 20px 30px rgba(255,255,255,0.9), inset 0 -20px 30px rgba(90,62,27,0.5);
         }
 
-        /* Capa Intermedia del Pastel */
+        /* Capa Intermedia de Vainilla Elegante */
         .tier-middle {
-            bottom: 143px;
-            width: 680px;
-            height: 145px;
-            background: linear-gradient(90deg, #ffcdd2, #fff9c4, #ffcdd2);
-            border: 5px solid #e57373;
-            border-bottom: 12px solid #b71c1c;
-            box-shadow: inset 0 20px 30px rgba(255,255,255,0.95), inset 0 -20px 30px rgba(183,28,28,0.5);
+            bottom: 138px;
+            width: 650px;
+            height: 140px;
+            background: linear-gradient(90deg, #edd297, #fff8e6, #edd297);
+            border: 4px solid #c49e52;
+            border-bottom: 10px solid #6b4920;
+            box-shadow: inset 0 18px 25px rgba(255,255,255,0.9), inset 0 -18px 25px rgba(107,73,32,0.4);
         }
 
-        /* Capa Superior del Pastel */
+        /* Capa Superior de Vainilla Elegante */
         .tier-top {
-            bottom: 278px;
-            width: 500px;
-            height: 135px;
-            background: linear-gradient(90deg, #b9f6ca, #e0f7fa, #b9f6ca);
-            border: 5px solid #00e676;
-            border-bottom: 10px solid #00c853;
-            box-shadow: inset 0 18px 28px rgba(255,255,255,1), inset 0 -18px 28px rgba(0,200,83,0.5);
+            bottom: 268px;
+            width: 470px;
+            height: 130px;
+            background: linear-gradient(90deg, #f6e2b3, #fffbf0, #f6e2b3);
+            border: 4px solid #d4af37;
+            border-bottom: 9px solid #7d5828;
+            box-shadow: inset 0 15px 22px rgba(255,255,255,1), inset 0 -15px 22px rgba(125,88,40,0.4);
         }
 
-        /* Rellenos multicolores visibles entre capas (Bizcocho gourmet) */
-        .cake-filling-multi {
+        /* Relleno fino de vainilla gourmet / crema tostada */
+        .cake-filling-vanilla {
             position: absolute;
             bottom: 0;
             width: 100%;
-            height: 20px;
-            background: repeating-linear-gradient(45deg, #ff1744, #ff1744 10px, #ffea00 10px, #ffea00 20px, #00b0ff 20px, #00b0ff 30px);
-            border-radius: 0 0 12px 12px;
-            box-shadow: 0 5px 10px rgba(0,0,0,0.6);
+            height: 16px;
+            background: linear-gradient(90deg, #8c6239, #c19a6b, #8c6239);
+            border-radius: 0 0 8px 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.4);
         }
 
-        /* Cobertura Glaseado de Fresa / Chocolate goteando con alto brillo */
-        .frosting-mega {
+        /* Cobertura superior de crema diplomática elegante con brillo sutil */
+        .frosting-vanilla {
             position: absolute;
             top: 0;
             width: 100%;
-            height: 40px;
-            background: linear-gradient(180deg, #ff4081 0%, #880e4f 100%);
-            border-radius: 22px;
-            box-shadow: 0 12px 22px rgba(0,0,0,0.4);
+            height: 32px;
+            background: linear-gradient(180deg, #fffdfa 0%, #e6cb94 100%);
+            border-radius: 16px;
+            box-shadow: 0 8px 15px rgba(0,0,0,0.2);
         }
 
-        /* Decoraciones extra incrustadas en el pastel (Bolitas de colores comestibles) */
-        .cake-sprinkle {
+        /* Perlas decorativas doradas elegantes */
+        .gold-pearl {
             position: absolute;
-            width: 12px;
-            height: 12px;
+            width: 10px;
+            height: 10px;
+            background: radial-gradient(circle at 30% 30%, #fff 20%, #d4af37 80%);
             border-radius: 50%;
-            box-shadow: 0 0 8px #fff;
+            box-shadow: 0 0 6px #d4af37;
             z-index: 5;
         }
 
         /* ==========================================================================
-           9. VELAS Y LLAMAS GIGANTES MÚLTIPLES
+           9. VELAS FINAS Y LLAMAS BRILLANTES
            ========================================================================== */
         .candles-mega-row {
             position: absolute;
-            top: -90px;
+            top: -85px;
             left: 50%;
             transform: translateX(-50%);
             display: flex;
-            gap: 75px;
+            gap: 80px;
             z-index: 15;
         }
 
         .candle-stick-mega {
-            width: 22px;
-            height: 95px;
-            background: linear-gradient(90deg, #00e676, #00b0ff, #ffea00, #ff1744);
-            border-radius: 6px;
+            width: 18px;
+            height: 90px;
+            background: linear-gradient(90deg, #d4af37, #fff, #d4af37);
+            border-radius: 4px;
             position: relative;
-            box-shadow: inset -5px 0 10px rgba(0,0,0,0.5), 0 0 30px rgba(0,230,118,0.9);
+            box-shadow: inset -3px 0 6px rgba(0,0,0,0.4), 0 0 20px rgba(212,175,55,0.8);
         }
 
         .mega-flame {
             position: absolute;
-            top: -55px;
+            top: -50px;
             left: 50%;
             transform: translateX(-50%);
-            width: 35px;
-            height: 58px;
+            width: 30px;
+            height: 50px;
             background: radial-gradient(circle at 50% 25%, #ffffff 15%, #ffea00 45%, #ff3d00 80%, rgba(255,0,0,0) 100%);
             border-radius: 50% 50% 20% 20%;
-            box-shadow: 0 0 45px #ffea00, 0 0 85px #ff3d00, 0 0 120px #ff1744, 0 0 150px #00e5ff;
-            animation: flameMegaFlicker 0.25s infinite alternate;
+            box-shadow: 0 0 40px #ffea00, 0 0 80px #ff3d00, 0 0 120px #ff1744;
+            animation: flameFlickerSmooth 0.2s infinite alternate;
+            will-change: transform, filter;
         }
 
-        @keyframes flameMegaFlicker {
-            0% { transform: translateX(-50%) scale(0.9) rotate(-6deg); filter: brightness(1); }
-            100% { transform: translateX(-50%) scale(1.3) rotate(6deg); filter: brightness(1.5); }
+        @keyframes flameFlickerSmooth {
+            0% { transform: translateX(-50%) scale(0.95); filter: brightness(1); }
+            100% { transform: translateX(-50%) scale(1.15); filter: brightness(1.3); }
         }
 
         /* ==========================================================================
@@ -362,13 +343,7 @@
             text-shadow: 0 0 25px rgba(255, 235, 59, 1), 0 0 45px rgba(255, 23, 68, 0.9), 3px 3px 10px rgba(0,0,0,0.9);
             letter-spacing: 1.5px;
             text-align: center;
-            animation: textFloatingMovement 3s ease-in-out infinite alternate;
             pointer-events: auto;
-        }
-
-        @keyframes textFloatingMovement {
-            0% { transform: translateY(0) rotate(-1deg); }
-            100% { transform: translateY(-8px) rotate(1deg); }
         }
 
         .btn-colossal {
@@ -379,69 +354,43 @@
             font-weight: 900;
             text-decoration: none;
             font-size: 1.1rem;
-            box-shadow: 0 0 40px rgba(0, 230, 118, 0.9);
-            transition: transform 0.3s ease;
+            box-shadow: 0 0 35px rgba(0, 230, 118, 0.8);
+            transition: transform 0.2s ease;
             display: inline-block;
             margin-bottom: 10px;
             pointer-events: auto;
         }
 
         .btn-colossal:hover {
-            transform: scale(1.15);
+            transform: scale(1.1);
         }
     </style>
 </head>
 <body>
 
-    <!-- Fila 1 de Guirnaldas de banderines multicolores -->
+    <!-- Guirnaldas -->
     <div class="garland-container">
-        <div class="pennant p-green"></div>
-        <div class="pennant p-sky"></div>
-        <div class="pennant p-yellow"></div>
-        <div class="pennant p-red"></div>
-        <div class="pennant p-orange"></div>
-        <div class="pennant p-blue"></div>
-        <div class="pennant p-pink"></div>
-        <div class="pennant p-cyan"></div>
-        <div class="pennant p-green"></div>
-        <div class="pennant p-sky"></div>
-        <div class="pennant p-yellow"></div>
-        <div class="pennant p-red"></div>
-        <div class="pennant p-orange"></div>
+        <div class="pennant p-green"></div><div class="pennant p-sky"></div><div class="pennant p-yellow"></div><div class="pennant p-red"></div><div class="pennant p-orange"></div><div class="pennant p-blue"></div><div class="pennant p-pink"></div><div class="pennant p-cyan"></div>
     </div>
-
-    <!-- Fila 2 de Guirnaldas de banderines cruzados -->
     <div class="garland-container-2">
-        <div class="pennant p-pink"></div>
-        <div class="pennant p-cyan"></div>
-        <div class="pennant p-green"></div>
-        <div class="pennant p-sky"></div>
-        <div class="pennant p-yellow"></div>
-        <div class="pennant p-red"></div>
-        <div class="pennant p-orange"></div>
-        <div class="pennant p-blue"></div>
-        <div class="pennant p-pink"></div>
-        <div class="pennant p-cyan"></div>
-        <div class="pennant p-green"></div>
-        <div class="pennant p-sky"></div>
+        <div class="pennant p-pink"></div><div class="pennant p-cyan"></div><div class="pennant p-green"></div><div class="pennant p-sky"></div><div class="pennant p-yellow"></div><div class="pennant p-red"></div><div class="pennant p-orange"></div><div class="pennant p-blue"></div>
     </div>
 
-    <!-- Fuegos artificiales colosales de fondo -->
+    <!-- Fuegos artificiales -->
     <div class="sky-storm" id="skyStorm"></div>
 
-    <!-- Lluvia masiva de confeti y serpentinas pesadas -->
+    <!-- Confeti -->
     <div class="confetti-rain" id="confettiRain"></div>
 
-    <!-- Lluvia masiva de globos de colores vivos -->
+    <!-- Globos -->
     <div class="balloons-storm" id="balloonsStorm"></div>
 
     <!-- Escenario principal -->
     <div class="colossal-stage">
         
-        <!-- Título principal protegido e intacto -->
         <h1>¡FELIZ CUMPLEAÑOS A LA NIÑA MÁS HERMOSA DEL MUNDOOOOOO!</h1>
 
-        <!-- Pastel Colosal Gigante con decoraciones de confeti, bizcochos y 5 velas -->
+        <!-- Pastel Elegante de Vainilla -->
         <div class="mega-cake">
             <div class="candles-mega-row">
                 <div class="candle-stick-mega"><div class="mega-flame"></div></div>
@@ -451,93 +400,92 @@
                 <div class="candle-stick-mega"><div class="mega-flame"></div></div>
             </div>
 
-            <!-- Capa Superior con decoraciones -->
+            <!-- Capa Superior Vainilla -->
             <div class="m-tier tier-top">
-                <div class="cake-filling-multi"></div>
-                <div class="frosting-mega"></div>
-                <div class="cake-sprinkle" style="top: 10px; left: 80px; background: #ffea00;"></div>
-                <div class="cake-sprinkle" style="top: 15px; left: 200px; background: #00e676;"></div>
-                <div class="cake-sprinkle" style="top: 12px; left: 350px; background: #00b0ff;"></div>
-                <div class="cake-sprinkle" style="top: 18px; left: 420px; background: #ff1744;"></div>
+                <div class="cake-filling-vanilla"></div>
+                <div class="frosting-vanilla"></div>
+                <div class="gold-pearl" style="top: 10px; left: 70px;"></div>
+                <div class="gold-pearl" style="top: 12px; left: 200px;"></div>
+                <div class="gold-pearl" style="top: 10px; left: 330px;"></div>
+                <div class="gold-pearl" style="top: 12px; left: 410px;"></div>
             </div>
 
-            <!-- Capa Intermedia con decoraciones -->
+            <!-- Capa Intermedia Vainilla -->
             <div class="m-tier tier-middle">
-                <div class="cake-filling-multi"></div>
-                <div class="frosting-mega"></div>
-                <div class="cake-sprinkle" style="top: 12px; left: 100px; background: #00e5ff;"></div>
-                <div class="cake-sprinkle" style="top: 16px; left: 250px; background: #ffea00;"></div>
-                <div class="cake-sprinkle" style="top: 10px; left: 400px; background: #00e676;"></div>
-                <div class="cake-sprinkle" style="top: 15px; left: 550px; background: #ff9100;"></div>
+                <div class="cake-filling-vanilla"></div>
+                <div class="frosting-vanilla"></div>
+                <div class="gold-pearl" style="top: 10px; left: 90px;"></div>
+                <div class="gold-pearl" style="top: 12px; left: 250px;"></div>
+                <div class="gold-pearl" style="top: 10px; left: 450px;"></div>
+                <div class="gold-pearl" style="top: 12px; left: 570px;"></div>
             </div>
 
-            <!-- Capa Base con decoraciones -->
+            <!-- Capa Base Vainilla -->
             <div class="m-tier tier-base">
-                <div class="cake-filling-multi"></div>
-                <div class="frosting-mega"></div>
-                <div class="cake-sprinkle" style="top: 14px; left: 150px; background: #ff1744;"></div>
-                <div class="cake-sprinkle" style="top: 12px; left: 320px; background: #00b0ff;"></div>
-                <div class="cake-sprinkle" style="top: 18px; left: 500px; background: #ffea00;"></div>
-                <div class="cake-sprinkle" style="top: 10px; left: 700px; background: #7c4dff;"></div>
+                <div class="cake-filling-vanilla"></div>
+                <div class="frosting-vanilla"></div>
+                <div class="gold-pearl" style="top: 10px; left: 120px;"></div>
+                <div class="gold-pearl" style="top: 12px; left: 320px;"></div>
+                <div class="gold-pearl" style="top: 10px; left: 520px;"></div>
+                <div class="gold-pearl" style="top: 12px; left: 720px;"></div>
             </div>
         </div>
 
-        <!-- Mensaje romántico -->
+        <!-- Mensaje -->
         <div class="love-text-floating">TE AMO MAS DE LO Q PUEDAS LLEGAR A IMAGINAR Y SENTIR</div>
 
-        <!-- Botón de retorno -->
+        <!-- Botón -->
         <a href="index.html" class="btn-colossal">⬅ Volver al multiverso</a>
     </div>
 
-    <!-- Motor JavaScript masivo con más densidad, colores y peso -->
+    <!-- Script optimizado para fluidez total sin lag -->
     <script>
-        /* Fuegos artificiales gigantes con todos los colores vibrantes */
         const skyStorm = document.getElementById('skyStorm');
-        const fireworkColors = ['#00e676', '#00b0ff', '#ffea00', '#ff1744', '#ff9100', '#7c4dff', '#ff4081', '#00e5ff', '#ffffff'];
+        const fireworkColors = ['#00e676', '#00b0ff', '#ffea00', '#ff1744', '#ff9100', '#7c4dff', '#ff4081', '#00e5ff', '#ffffff', '#d4af37'];
 
-        function lanzarFuegoGigantePesado() {
+        function lanzarFuegoFluido() {
             const centerX = Math.random() * 85 + 7;
-            const centerY = Math.random() * 60 + 10;
-            for (let i = 0; i < 48; i++) {
+            const centerY = Math.random() * 55 + 15;
+            for (let i = 0; i < 36; i++) {
                 const p = document.createElement('div');
                 p.classList.add('firework-particle');
-                const angle = (Math.PI * 2 / 48) * i;
-                const distance = 100 + Math.random() * 140;
+                const angle = (Math.PI * 2 / 36) * i;
+                const distance = 90 + Math.random() * 110;
                 p.style.left = centerX + 'vw';
                 p.style.top = centerY + 'vh';
                 p.style.backgroundColor = fireworkColors[Math.floor(Math.random() * fireworkColors.length)];
                 p.style.setProperty('--tx', Math.cos(angle) * distance + 'px');
                 p.style.setProperty('--ty', Math.sin(angle) * distance + 'px');
                 skyStorm.appendChild(p);
-                setTimeout(() => p.remove(), 1500);
+                setTimeout(() => p.remove(), 1200);
             }
         }
-        setInterval(lanzarFuegoGigantePesado, 350);
+        setInterval(lanzarFuegoFluido, 450);
 
-        /* Confeti masivo cayendo sin parar */
+        // Confeti optimizado en cantidad prudente para cero lag
         const confettiRain = document.getElementById('confettiRain');
-        for (let i = 0; i < 110; i++) {
+        for (let i = 0; i < 50; i++) {
             const c = document.createElement('div');
             c.classList.add('confetti-piece');
             c.style.left = Math.random() * 100 + 'vw';
             c.style.backgroundColor = fireworkColors[Math.floor(Math.random() * fireworkColors.length)];
-            c.style.animationDuration = (2.0 + Math.random() * 2.8) + 's';
-            c.style.animationDelay = (Math.random() * 4) + 's';
-            if(Math.random() > 0.3) c.style.borderRadius = '50%';
+            c.style.animationDuration = (3.0 + Math.random() * 2) + 's';
+            c.style.animationDelay = (Math.random() * 3) + 's';
+            if(Math.random() > 0.4) c.style.borderRadius = '50%';
             confettiRain.appendChild(c);
         }
 
-        /* Globos gigantes saturados de azul, verde, amarillo, rojo, naranja, celeste y más */
+        // Globos optimizados
         const balloonsStorm = document.getElementById('balloonsStorm');
         const vibrantBalloonColors = ['#00e676', '#00b0ff', '#ffea00', '#ff1744', '#ff9100', '#7c4dff', '#ff4081', '#00e5ff'];
 
-        for (let i = 0; i < 95; i++) {
+        for (let i = 0; i < 45; i++) {
             const b = document.createElement('div');
             b.classList.add('b-item');
             b.style.left = (Math.random() * 95) + 'vw';
             b.style.backgroundColor = vibrantBalloonColors[Math.floor(Math.random() * vibrantBalloonColors.length)];
-            b.style.animationDuration = (2.8 + Math.random() * 2.5) + 's';
-            b.style.animationDelay = (Math.random() * 5) + 's';
+            b.style.animationDuration = (3.5 + Math.random() * 2.5) + 's';
+            b.style.animationDelay = (Math.random() * 4) + 's';
             balloonsStorm.appendChild(b);
         }
     </script>
