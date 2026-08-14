@@ -1,6 +1,276 @@
-<!-- Botón flotante de sorpresa -->
-<div style="position: fixed; bottom: 25px; right: 25px; z-index: 9999;">
-    <a href="cumple.html" style="background: linear-gradient(135deg, #ffd700, #ffa000); color: #1b0c1e; padding: 16px 28px; border-radius: 35px; font-weight: bold; text-decoration: none; box-shadow: 0 0 25px rgba(255, 215, 0, 0.8); font-size: 1.2rem; display: flex; align-items: center; gap: 10px; transition: transform 0.3s ease;">
-        🎁 Pícale aquí ✨
-    </a>
-</div>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡Feliz Cumpleaños, Mi Amor! 🌻✨</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #1b0c1e 0%, #2d1235 35%, #3e2723 70%, #120516 100%);
+            font-family: 'Georgia', serif;
+            color: #fce4ec;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 100vh;
+            overflow-x: hidden;
+            text-align: center;
+            position: relative;
+        }
+
+        /* Globos flotantes estilo burbujas */
+        .bubble-container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            overflow: hidden;
+            z-index: 1;
+            pointer-events: none;
+        }
+        .balloon {
+            position: absolute;
+            bottom: -150px;
+            width: 50px;
+            height: 65px;
+            border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
+            animation: floatUp 8s infinite ease-in-out;
+            opacity: 0.8;
+        }
+        .balloon::after {
+            content: "";
+            position: absolute;
+            bottom: -12px;
+            left: 22px;
+            width: 2px;
+            height: 15px;
+            background: rgba(255,255,255,0.6);
+        }
+        @keyframes floatUp {
+            0% { transform: translateY(0) scale(1); opacity: 0.8; }
+            50% { opacity: 1; }
+            100% { transform: translateY(-110vh) scale(1.1); opacity: 0; }
+        }
+
+        /* Contenido principal */
+        .content-wrapper {
+            position: relative;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 30px 20px;
+            max-width: 800px;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #ff007f, #ff758c, #ffeb3b, #00e676, #00b0ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 30px rgba(255, 235, 59, 0.6);
+            margin-bottom: 20px;
+            animation: glowText 2s infinite alternate;
+        }
+        @keyframes glowText {
+            from { filter: drop-shadow(0 0 10px rgba(255,117,140,0.8)); }
+            to { filter: drop-shadow(0 0 25px rgba(255,235,59,1)); }
+        }
+
+        /* PASTEL GIGANTE ANIMADO */
+        .cake-container {
+            position: relative;
+            margin: 30px 0;
+            animation: bounceCake 3s ease-in-out infinite;
+        }
+        @keyframes bounceCake {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-12px); }
+        }
+
+        .cake {
+            position: relative;
+            width: 320px;
+            height: 220px;
+        }
+
+        /* Capas del pastel (Color vainilla elegante) */
+        .layer {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 15px;
+        }
+        .layer-bottom {
+            bottom: 0;
+            width: 320px;
+            height: 90px;
+            background: linear-gradient(90deg, #d7ccc8, #efebe9, #d7ccc8);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            border: 3px solid #bcaaa4;
+        }
+        .layer-middle {
+            bottom: 90px;
+            width: 250px;
+            height: 75px;
+            background: linear-gradient(90deg, #ffe0b2, #fff3e0, #ffe0b2);
+            border: 3px solid #ffcc80;
+        }
+        .layer-top {
+            bottom: 165px;
+            width: 180px;
+            height: 60px;
+            background: linear-gradient(90deg, #ffccbc, #fbe9e7, #ffccbc);
+            border: 3px solid #ffab91;
+        }
+
+        /* Glaseado decorativo */
+        frosting {
+            position: absolute;
+            background: #fff;
+            border-radius: 10px;
+        }
+
+        /* Velas con chispas */
+        .candles {
+            position: absolute;
+            top: -35px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 25px;
+            z-index: 5;
+        }
+        .candle {
+            width: 14px;
+            height: 45px;
+            background: linear-gradient(to top, #ff4081, #ff80ab, #fff);
+            border-radius: 5px;
+            position: relative;
+        }
+        .flame {
+            position: absolute;
+            top: -22px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 14px;
+            height: 22px;
+            background: radial-gradient(circle, #fff 20%, #ffeb3b 50%, #ff5722 100%);
+            border-radius: 50% 50% 20% 20%;
+            box-shadow: 0 0 15px #ffeb3b, 0 0 30px #ff5722;
+            animation: flicker 0.6s infinite alternate;
+        }
+        @keyframes flicker {
+            0% { transform: translateX(-50%) scale(1) rotate(-3deg); opacity: 0.9; }
+            100% { transform: translateX(-50%) scale(1.15) rotate(3deg); opacity: 1; }
+        }
+
+        /* Chispas que botan de las velas */
+        .spark {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: #ffeb3b;
+            border-radius: 50%;
+            box-shadow: 0 0 8px #ffeb3b;
+            animation: sparkAnim 1.2s infinite linear;
+        }
+        @keyframes sparkAnim {
+            0% { transform: translate(0, 0) scale(1); opacity: 1; }
+            100% { transform: translate(calc(var(--tx) * 30px), calc(var(--ty) * 30px)) scale(0); opacity: 0; }
+        }
+
+        /* Tarjeta de dedicatoria */
+        .birthday-card {
+            background: rgba(50, 19, 56, 0.9);
+            border: 3px solid #ffd700;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.4);
+            margin-top: 20px;
+        }
+        p {
+            font-size: 1.3rem;
+            line-height: 1.6;
+            color: #f8bbd0;
+            margin-bottom: 25px;
+        }
+
+        .btn-volver {
+            display: inline-block;
+            background: #ffd700;
+            color: #1b0c1e;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: bold;
+            text-decoration: none;
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
+            transition: transform 0.3s ease;
+        }
+        .btn-volver:hover {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bubble-container" id="balloonContainer"></div>
+
+    <div class="content-wrapper">
+        <h1>¡FELIZ CUMPLEAÑOS, MI AMOR! 🎉✨</h1>
+
+        <div class="cake-container">
+            <div class="cake">
+                <div class="candles">
+                    <div class="candle">
+                        <div class="flame"></div>
+                        <div class="spark" style="--tx: -1; --ty: -1.5;"></div>
+                        <div class="spark" style="--tx: 1; --ty: -2;"></div>
+                    </div>
+                    <div class="candle">
+                        <div class="flame"></div>
+                        <div class="spark" style="--tx: -0.5; --ty: -2;"></div>
+                        <div class="spark" style="--tx: 0.8; --ty: -1.8;"></div>
+                    </div>
+                    <div class="candle">
+                        <div class="flame"></div>
+                        <div class="spark" style="--tx: -1.2; --ty: -1.7;"></div>
+                        <div class="spark" style="--tx: 1.2; --ty: -1.5;"></div>
+                    </div>
+                </div>
+
+                <div class="layer layer-top"></div>
+                <div class="layer layer-middle"></div>
+                <div class="layer layer-bottom"></div>
+            </div>
+        </div>
+
+        <div class="birthday-card">
+            <p>Hoy el universo entero celebra tu existencia, mi chiquita preciosa. Eres la luz más hermosa que ilumina mis días, mi compañera de multiverso y la casualidad más bonita de mi vida. Que este nuevo año te traiga tanta felicidad como tú le regalas a mi corazón. 🌻🌷💖</p>
+            <a href="index.html" class="btn-volver">⬅ Volver al multiverso estelar</a>
+        </div>
+    </div>
+
+    <script>
+        // Generador automático de globos tipo burbujas flotantes
+        const container = document.getElementById('balloonContainer');
+        const colors = ['#ff4081', '#ffeb3b', '#00e676', '#00b0ff', '#ff758c', '#ab47bc'];
+        
+        for (let i = 0; i < 20; i++) {
+            const balloon = document.createElement('div');
+            balloon.classList.add('balloon');
+            balloon.style.left = Math.random() * 100 + 'vw';
+            balloon.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+            balloon.style.animationDuration = (5 + Math.random() * 5) + 's';
+            balloon.style.animationDelay = (Math.random() * 5) + 's';
+            container.appendChild(balloon);
+        }
+    </script>
+
+</body>
+</html>
