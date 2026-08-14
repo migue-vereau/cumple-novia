@@ -3,219 +3,253 @@
 <head>
     <meta charset="UTF-8">
     <title>¡Feliz Cumpleaños, Mi Amor! 🌻✨</title>
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;800;900&display=swap" rel="stylesheet">
     <style>
         * { box-sizing: border-box; }
         body, html {
             margin: 0; padding: 0; width: 100%; height: 100vh;
-            background: radial-gradient(circle at center, #1b0c1e 0%, #0d0410 100%);
+            background: #050108;
             font-family: 'Poppins', sans-serif;
             overflow: hidden;
             display: flex; flex-direction: column; align-items: center; justify-content: center;
         }
 
-        /* Fuegos artificiales y luces de fondo */
-        .fireworks-container {
+        /* FONDO LLENO DE LUCES Y FUEGOS ARTIFICIALES MASIVOS */
+        .sky-universe {
             position: absolute; width: 100%; height: 100%; top: 0; left: 0; pointer-events: none; z-index: 1;
         }
-        .firework {
-            position: absolute; width: 5px; height: 5px; border-radius: 50%;
-            box-shadow: 0 0 15px #ffeb3b, 0 0 30px #ff007f, 0 0 45px #00e676;
-            animation: explode 1.5s infinite ease-out;
+        .firework-particle {
+            position: absolute; width: 8px; height: 8px; border-radius: 50%;
+            box-shadow: 0 0 25px #ffeb3b, 0 0 50px #ff007f, 0 0 75px #00e676, 0 0 100px #00b0ff;
+            animation: explodeReal 1.4s infinite ease-out;
         }
-        @keyframes explode {
-            0% { transform: scale(0.1); opacity: 1; }
-            50% { transform: scale(25); opacity: 0.8; }
-            100% { transform: scale(40); opacity: 0; }
+        @keyframes explodeReal {
+            0% { transform: scale(0.1); opacity: 1; filter: brightness(2); }
+            50% { transform: scale(45); opacity: 0.9; }
+            100% { transform: scale(70); opacity: 0; }
         }
 
-        /* Globos realistas flotando y cayendo */
-        .balloons-container {
+        /* GLOBOS CRUZÁNDOSE: Flotando hacia arriba Y cayendo al mismo tiempo */
+        .balloons-chaos {
             position: absolute; width: 100%; height: 100%; top: 0; left: 0; pointer-events: none; z-index: 2;
         }
-        .balloon-real {
-            position: absolute; width: 45px; height: 55px; border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
-            animation: floatDownUp 7s infinite ease-in-out;
-            opacity: 0.85; box-shadow: inset -6px -6px 15px rgba(0,0,0,0.3), 0 0 15px rgba(255,255,255,0.2);
+        .balloon-up {
+            position: absolute; width: 55px; height: 70px; border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
+            animation: moveUp 5s infinite linear;
+            box-shadow: inset -10px -10px 25px rgba(0,0,0,0.5), 0 0 25px rgba(255,255,255,0.4);
+            opacity: 0.95;
         }
-        .balloon-real::after {
-            content: ""; position: absolute; bottom: -10px; left: 20px; width: 2px; height: 20px; background: rgba(255,255,255,0.5);
+        .balloon-down {
+            position: absolute; width: 55px; height: 70px; border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
+            animation: moveDown 6s infinite linear;
+            box-shadow: inset -10px -10px 25px rgba(0,0,0,0.5), 0 0 25px rgba(255,255,255,0.4);
+            opacity: 0.95;
         }
-        @keyframes floatDownUp {
-            0% { transform: translateY(-10vh) translateX(0) rotate(0deg); }
-            50% { transform: translateY(50vh) translateX(30px) rotate(5deg); }
-            100% { transform: translateY(110vh) translateX(-20px) rotate(-5deg); }
+        .balloon-up::after, .balloon-down::after {
+            content: ""; position: absolute; bottom: -14px; left: 26px; width: 2px; height: 28px; background: rgba(255,255,255,0.7);
+        }
+        @keyframes moveUp {
+            0% { transform: translateY(110vh) translateX(0) rotate(0deg); }
+            100% { transform: translateY(-20vh) translateX(40px) rotate(15deg); }
+        }
+        @keyframes moveDown {
+            0% { transform: translateY(-20vh) translateX(0) rotate(0deg); }
+            100% { transform: translateY(110vh) translateX(-40px) rotate(-15deg); }
         }
 
-        /* Contenido principal centrado ocupando gran parte de la pantalla */
-        .main-wrapper {
+        /* CONTENEDOR CENTRAL DE IMPACTO */
+        .center-stage {
             position: relative; z-index: 10; display: flex; flex-direction: column; align-items: center; justify-content: center;
-            width: 90%; max-width: 900px; text-align: center;
+            width: 95%; max-width: 950px; text-align: center; gap: 18px;
+            background: rgba(10, 2, 15, 0.4);
+            padding: 20px;
+            border-radius: 30px;
+            backdrop-filter: blur(3px);
+            box-shadow: 0 0 50px rgba(255, 0, 127, 0.2);
         }
 
-        /* TÍTULO VIBRANTE */
+        /* TÍTULO LUMINOSO Y GIGANTE */
         h1 {
-            font-size: 2.3rem; font-weight: 800; text-transform: uppercase; margin: 0 0 15px 0;
-            background: linear-gradient(45deg, #ff007f, #ffeb3b, #00e676, #00b0ff, #ff4081);
+            font-size: 2.2rem; font-weight: 900; text-transform: uppercase; margin: 0;
+            background: linear-gradient(45deg, #ff007f, #ffeb3b, #00e676, #00b0ff, #ff758c);
             -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            filter: drop-shadow(0 0 20px rgba(255, 235, 59, 0.7));
-            animation: titleGlow 2s infinite alternate;
+            filter: drop-shadow(0 0 25px rgba(255, 235, 59, 1)) drop-shadow(0 0 10px rgba(255, 0, 127, 1));
+            letter-spacing: 1px;
+            animation: textNeon 1.5s infinite alternate;
         }
-        @keyframes titleGlow {
-            from { filter: drop-shadow(0 0 10px rgba(255, 0, 127, 0.6)); }
-            to { filter: drop-shadow(0 0 25px rgba(255, 235, 59, 1)); }
-        }
-
-        /* PASTEL GIGANTE CASI REALISTA */
-        .cake-large {
-            position: relative; width: 340px; height: 210px; margin: 10px auto;
-            animation: floatCake 3s ease-in-out infinite;
-        }
-        @keyframes floatCake {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-8px); }
+        @keyframes textNeon {
+            from { filter: drop-shadow(0 0 15px rgba(255, 235, 59, 0.8)); }
+            to { filter: drop-shadow(0 0 35px rgba(255, 255, 255, 1)) drop-shadow(0 0 20px rgba(0, 230, 118, 1)); }
         }
 
-        /* Capas de Vainilla */
-        .cake-layer {
-            position: absolute; left: 50%; transform: translateX(-50%); border-radius: 12px;
+        /* PASTEL GIGANTE HIPER-DETALLADO CON CHISPAS DE CHOCOLATE */
+        .cake-massive {
+            position: relative; width: 420px; height: 260px; margin: 10px auto;
+            animation: cakeBreathing 2.5s ease-in-out infinite;
         }
-        .layer-bottom {
-            bottom: 0; width: 340px; height: 75px;
-            background: linear-gradient(90deg, #d7ccc8, #f5f5f5, #d7ccc8);
-            border: 3px solid #bcaaa4; box-shadow: 0 15px 30px rgba(0,0,0,0.6);
-        }
-        .layer-middle {
-            bottom: 70px; width: 270px; height: 65px;
-            background: linear-gradient(90deg, #ffe0b2, #fff9c4, #ffe0b2);
-            border: 3px solid #ffe082;
-        }
-        .layer-top {
-            bottom: 130px; width: 200px; height: 55px;
-            background: linear-gradient(90deg, #ffccbc, #ffebee, #ffccbc);
-            border: 3px solid #ffab91;
-        }
-        /* Glaseado estético goteando */
-        .frosting-drip {
-            position: absolute; top: 0; width: 100%; height: 18px; background: #fff; border-radius: 10px;
-            box-shadow: 0 5px 10px rgba(0,0,0,0.15);
+        @keyframes cakeBreathing {
+            0%, 100% { transform: scale(1) translateY(0); }
+            50% { transform: scale(1.02) translateY(-8px); }
         }
 
-        /* Velas explosivas con chispas */
-        .candles-box {
-            position: absolute; top: -45px; left: 50%; transform: translateX(-50%); display: flex; gap: 30px; z-index: 5;
+        .c-layer {
+            position: absolute; left: 50%; transform: translateX(-50%); border-radius: 16px;
         }
-        .candle-stick {
-            width: 12px; height: 50px; background: linear-gradient(to top, #ff4081, #ff80ab, #ffffff);
-            border-radius: 4px; position: relative; box-shadow: 0 0 10px rgba(255,64,129,0.5);
+        /* Base con textura pesada de chispas de chocolate reales */
+        .layer-bot {
+            bottom: 0; width: 420px; height: 90px;
+            background: linear-gradient(90deg, #d7ccc8, #fff3e0, #d7ccc8);
+            border: 4px solid #bcaaa4; box-shadow: 0 25px 50px rgba(0,0,0,0.8), inset 0 0 15px rgba(0,0,0,0.2);
+            background-image: 
+                radial-gradient(#3e2723 18%, transparent 19%), 
+                radial-gradient(#3e2723 18%, transparent 19%),
+                radial-gradient(#4e342e 20%, transparent 21%);
+            background-size: 20px 20px, 30px 30px, 15px 15px;
+            background-position: 0 0, 10px 10px, 5px 15px;
         }
-        .flame-real {
-            position: absolute; top: -25px; left: 50%; transform: translateX(-50%); width: 16px; height: 26px;
-            background: radial-gradient(circle, #fff 15%, #ffeb3b 50%, #ff5722 100%);
+        .layer-mid {
+            bottom: 85px; width: 330px; height: 80px;
+            background: linear-gradient(90deg, #ffe0b2, #ffffff, #ffe0b2);
+            border: 4px solid #ffcc80;
+            background-image: 
+                radial-gradient(#3e2723 18%, transparent 19%), 
+                radial-gradient(#4e342e 20%, transparent 21%);
+            background-size: 22px 22px, 14px 14px;
+            background-position: 5px 5px, 12px 2px;
+        }
+        .layer-top-cake {
+            bottom: 160px; width: 240px; height: 70px;
+            background: linear-gradient(90deg, #ffccbc, #fff, #ffccbc);
+            border: 4px solid #ffab91;
+            background-image: radial-gradient(#3e2723 18%, transparent 19%);
+            background-size: 18px 18px;
+        }
+        /* Glaseado brillante de crema que chorrea */
+        .frosting-drip-3d {
+            position: absolute; top: 0; width: 100%; height: 26px; background: #ffffff; border-radius: 14px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.3), inset 0 -4px 8px rgba(0,0,0,0.1);
+        }
+
+        /* VELAS EXPLOSIVAS LANZANDO CHISPAS DE FUEGO CONTINUAS */
+        .candles-cluster {
+            position: absolute; top: -55px; left: 50%; transform: translateX(-50%); display: flex; gap: 40px; z-index: 5;
+        }
+        .candle-stick-real {
+            width: 15px; height: 60px; background: linear-gradient(to top, #ff4081, #ff80ab, #ffffff);
+            border-radius: 6px; position: relative; box-shadow: 0 0 15px rgba(255,64,129,0.9);
+        }
+        .flame-explosive {
+            position: absolute; top: -32px; left: 50%; transform: translateX(-50%); width: 20px; height: 35px;
+            background: radial-gradient(circle, #ffffff 15%, #ffeb3b 45%, #ff5722 80%, #ff0000 100%);
             border-radius: 50% 50% 20% 20%;
-            box-shadow: 0 0 20px #ffeb3b, 0 0 35px #ff5722, 0 0 50px #ff007f;
-            animation: flameFlicker 0.4s infinite alternate;
+            box-shadow: 0 0 30px #ffeb3b, 0 0 50px #ff5722, 0 0 80px #ff007f, 0 0 100px #ffffff;
+            animation: flameVibe 0.25s infinite alternate;
         }
-        @keyframes flameFlicker {
-            0% { transform: translateX(-50%) scale(1) rotate(-4deg); }
-            100% { transform: translateX(-50%) scale(1.15) rotate(4deg); }
+        @keyframes flameVibe {
+            0% { transform: translateX(-50%) scale(0.95) rotate(-6deg); filter: brightness(1); }
+            100% { transform: translateX(-50%) scale(1.25) rotate(6deg); filter: brightness(1.4); }
         }
-        /* Chispas explosivas saliendo de las velas */
-        .sparkle {
-            position: absolute; width: 5px; height: 5px; background: #fff; border-radius: 50%;
-            box-shadow: 0 0 8px #ffeb3b, 0 0 12px #ff007f;
-            animation: explodeSpark 1s infinite linear;
+        /* Chispas de fuego saliendo disparadas en ráfaga */
+        .fire-spark {
+            position: absolute; width: 7px; height: 7px; background: #ffffff; border-radius: 50%;
+            box-shadow: 0 0 12px #ffeb3b, 0 0 20px #ff007f, 0 0 30px #ff5722;
+            animation: sparkShoot 0.7s infinite linear;
         }
-        @keyframes explodeSpark {
-            0% { transform: translate(0, 0) scale(1); opacity: 1; }
-            100% { transform: translate(calc(var(--dx) * 45px), calc(var(--dy) * 45px)) scale(0); opacity: 0; }
-        }
-
-        /* TEXTO ROMÁNTICO SOLICITADO */
-        .love-message {
-            font-family: 'Great Vibes', cursive;
-            font-size: 2.8rem;
-            color: #ffd700;
-            margin: 20px 0 15px 0;
-            text-shadow: 0 0 20px rgba(255, 215, 0, 0.8), 2px 2px 5px rgba(0,0,0,0.9);
-            line-height: 1.2;
+        @keyframes sparkShoot {
+            0% { transform: translate(0, 0) scale(1.2); opacity: 1; }
+            100% { transform: translate(calc(var(--vx) * 65px), calc(var(--vy) * 65px)) scale(0); opacity: 0; }
         }
 
-        /* Botón regresar */
-        .btn-multiverse {
-            background: linear-gradient(135deg, #ff007f, #ff758c);
-            color: #fff; padding: 10px 25px; border-radius: 30px; font-weight: 600;
-            text-decoration: none; font-size: 0.95rem; box-shadow: 0 0 20px rgba(255,0,127,0.6);
-            transition: transform 0.3s ease; display: inline-block;
+        /* TEXTO ROMÁNTICO DEFINITIVO (Grande, claro, con brillo intenso) */
+        .love-text-epic {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #ffffff;
+            margin: 5px 0;
+            text-shadow: 0 0 20px #ffd700, 0 0 40px #ff007f, 2px 2px 10px rgba(0,0,0,1);
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
         }
-        .btn-multiverse:hover { transform: scale(1.08); }
+
+        /* Botón dinámico */
+        .btn-return {
+            background: linear-gradient(135deg, #ff007f, #ffeb3b);
+            color: #1b0c1e; padding: 12px 30px; border-radius: 35px; font-weight: 900;
+            text-decoration: none; font-size: 1rem; box-shadow: 0 0 25px rgba(255, 235, 59, 0.8);
+            transition: transform 0.3s ease; display: inline-block; margin-top: 5px;
+        }
+        .btn-return:hover { transform: scale(1.12); }
     </style>
 </head>
 <body>
 
-    <!-- Fuegos artificiales animados de fondo -->
-    <div class="fireworks-container" id="fwContainer"></div>
+    <!-- Fondo saturado de luces y fuegos artificiales -->
+    <div class="sky-universe" id="universeBox"></div>
 
-    <!-- Globos realistas cayendo y flotando -->
-    <div class="balloons-container" id="balloonContainer"></div>
+    <!-- Globos caóticos subiendo y bajando al mismo tiempo -->
+    <div class="balloons-chaos" id="chaosBalloons"></div>
 
-    <div class="main-wrapper">
+    <div class="center-stage">
         <h1>¡FELIZ CUMPLEAÑOS A LA NIÑA MÁS HERMOSA DEL MUNDOOOOOO!</h1>
 
-        <!-- Pastel Gigante Vainilla con Velas Explosivas -->
-        <div class="cake-large">
-            <div class="candles-box">
-                <div class="candle-stick">
-                    <div class="flame-real"></div>
-                    <div class="sparkle" style="--dx: -1.5; --dy: -2;"></div>
-                    <div class="sparkle" style="--dx: 1.2; --dy: -2.2;"></div>
+        <!-- Pastel gigante con chispas de chocolate y velas lanzando fuego -->
+        <div class="cake-massive">
+            <div class="candles-cluster">
+                <div class="candle-stick-real">
+                    <div class="flame-explosive"></div>
+                    <div class="fire-spark" style="--vx: -1.8; --vy: -2.5;"></div>
+                    <div class="fire-spark" style="--vx: 1.5; --vy: -2.8;"></div>
                 </div>
-                <div class="candle-stick">
-                    <div class="flame-real"></div>
-                    <div class="sparkle" style="--dx: -0.8; --dy: -2.5;"></div>
-                    <div class="sparkle" style="--dx: 0.9; --dy: -2.1;"></div>
+                <div class="candle-stick-real">
+                    <div class="flame-explosive"></div>
+                    <div class="fire-spark" style="--vx: -1.1; --vy: -3.1;"></div>
+                    <div class="fire-spark" style="--vx: 1.3; --vy: -2.4;"></div>
                 </div>
-                <div class="candle-stick">
-                    <div class="flame-real"></div>
-                    <div class="sparkle" style="--dx: -1.2; --dy: -2.1;"></div>
-                    <div class="sparkle" style="--dx: 1.5; --dy: -2.3;"></div>
+                <div class="candle-stick-real">
+                    <div class="flame-explosive"></div>
+                    <div class="fire-spark" style="--vx: -1.5; --vy: -2.7;"></div>
+                    <div class="fire-spark" style="--vx: 1.8; --vy: -2.9;"></div>
                 </div>
             </div>
 
-            <div class="cake-layer layer-top"><div class="frosting-drip"></div></div>
-            <div class="cake-layer layer-middle"><div class="frosting-drip"></div></div>
-            <div class="cake-layer layer-bottom"><div class="frosting-drip"></div></div>
+            <div class="c-layer layer-top-cake"><div class="frosting-drip-3d"></div></div>
+            <div class="c-layer layer-mid"><div class="frosting-drip-3d"></div></div>
+            <div class="c-layer layer-bot"><div class="frosting-drip-3d"></div></div>
         </div>
 
-        <!-- Texto exacto solicitado con letras grandes y hermosas -->
-        <div class="love-message">TE AMO MAS DE LO Q PUEDAS LLEGAR A IMAGINAR Y SENTIR</div>
+        <!-- Texto romántico limpio, gigante y resplandeciente -->
+        <div class="love-text-epic">TE AMO MAS DE LO Q PUEDAS LLEGAR A IMAGINAR Y SENTIR</div>
 
-        <a href="index.html" class="btn-multiverse">⬅ Volver al multiverso</a>
+        <a href="index.html" class="btn-return">⬅ Volver al multiverso</a>
     </div>
 
     <script>
-        // Generador de fuegos artificiales dinámicos
-        const fwContainer = document.getElementById('fwContainer');
+        // Fuegos artificiales masivos estallando por todo el fondo constantemente
+        const universeBox = document.getElementById('universeBox');
         setInterval(() => {
             const fw = document.createElement('div');
-            fw.classList.add('firework');
-            fw.style.left = Math.random() * 90 + 5 + 'vw';
-            fw.style.top = Math.random() * 70 + 10 + 'vh';
-            fwContainer.appendChild(fw);
-            setTimeout(() => fw.remove(), 1500);
-        }, 800);
+            fw.classList.add('firework-particle');
+            fw.style.left = (Math.random() * 90 + 5) + 'vw';
+            fw.style.top = (Math.random() * 80 + 10) + 'vh';
+            universeBox.appendChild(fw);
+            setTimeout(() => fw.remove(), 1400);
+        }, 400); // Mucha más frecuencia para que parezca una fiesta real
 
-        // Generador de globos realistas cayendo y flotando
-        const bContainer = document.getElementById('balloonContainer');
-        const bColors = ['#ff4081', '#ffeb3b', '#00e676', '#00b0ff', '#e040fb', '#ff5722'];
-        for (let i = 0; i < 18; i++) {
+        // Generador de globos cruzándose (la mitad sube, la mitad baja al mismo tiempo)
+        const chaosBalloons = document.getElementById('chaosBalloons');
+        const colorList = ['#ff4081', '#ffeb3b', '#00e676', '#00b0ff', '#e040fb', '#ff5722', '#7c4dff'];
+        
+        for (let i = 0; i < 22; i++) {
             const balloon = document.createElement('div');
-            balloon.classList.add('balloon-real');
-            balloon.style.left = Math.random() * 95 + 'vw';
-            balloon.style.backgroundColor = bColors[Math.floor(Math.random() * bColors.length)];
-            balloon.style.animationDuration = (5 + Math.random() * 5) + 's';
+            // Alternar entre subir y bajar
+            const isUp = i % 2 === 0;
+            balloon.classList.add(isUp ? 'balloon-up' : 'balloon-down');
+            
+            balloon.style.left = (Math.random() * 92) + 'vw';
+            balloon.style.backgroundColor = colorList[Math.floor(Math.random() * colorList.length)];
+            balloon.style.animationDuration = (3.5 + Math.random() * 3.5) + 's';
             balloon.style.animationDelay = (Math.random() * 5) + 's';
-            bContainer.appendChild(balloon);
+            chaosBalloons.appendChild(balloon);
         }
     </script>
 </body>
