@@ -6,7 +6,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Plus+Jakarta+Sans:wght@700;800;900&display=swap" rel="stylesheet">
     <style>
         /* ==========================================================================
-           1. CONFIGURACIÓN GLOBAL Y FONDO MULTICOLOR (DORADO, ROJO Y AMARILLO)
+           1. CONFIGURACIÓN GLOBAL Y FONDO DORADO TEXTURIZADO PESADO
            ========================================================================== */
         * {
             box-sizing: border-box;
@@ -17,7 +17,7 @@
         body, html {
             width: 100%;
             height: 100vh;
-            background: radial-gradient(circle at center, #ffca28 0%, #d32f2f 50%, #4a0000 100%);
+            background: radial-gradient(circle at center, #fff176 0%, #ffb300 35%, #e65100 75%, #4e1400 100%);
             font-family: 'Plus Jakarta Sans', sans-serif;
             overflow: hidden;
             display: flex;
@@ -27,7 +27,60 @@
         }
 
         /* ==========================================================================
-           2. CAPA DE FUEGOS ARTIFICIALES GIGANTES (CHISPAS REALES ROJAS, DORADAS Y AMARILLAS)
+           2. GUIRNALDAS DE BANDERINES MÚLTIPLES (SUPERIOR DOBLE FILA)
+           ========================================================================== */
+        .garland-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 110px;
+            pointer-events: none;
+            z-index: 3;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .garland-container-2 {
+            position: absolute;
+            top: 35px;
+            left: 0;
+            width: 100%;
+            height: 110px;
+            pointer-events: none;
+            z-index: 3;
+            display: flex;
+            justify-content: space-around;
+            opacity: 0.85;
+        }
+
+        .pennant {
+            width: 0;
+            height: 0;
+            border-left: 24px solid transparent;
+            border-right: 24px solid transparent;
+            border-top: 40px solid;
+            filter: drop-shadow(0 6px 12px rgba(0,0,0,0.6));
+            animation: pennantSwing 2s ease-in-out infinite alternate;
+            transform-origin: top center;
+        }
+
+        .p-green { border-top-color: #00e676; animation-delay: 0.1s; }
+        .p-sky { border-top-color: #00b0ff; animation-delay: 0.3s; }
+        .p-yellow { border-top-color: #ffea00; animation-delay: 0.2s; }
+        .p-red { border-top-color: #ff1744; animation-delay: 0.4s; }
+        .p-orange { border-top-color: #ff9100; animation-delay: 0.15s; }
+        .p-blue { border-top-color: #7c4dff; animation-delay: 0.35s; }
+        .p-pink { border-top-color: #ff4081; animation-delay: 0.25s; }
+        .p-cyan { border-top-color: #00e5ff; animation-delay: 0.05s; }
+
+        @keyframes pennantSwing {
+            0% { transform: rotate(-7deg); }
+            100% { transform: rotate(7deg); }
+        }
+
+        /* ==========================================================================
+           3. FUEGOS ARTIFICIALES COLOSALES Y BRILLANTES (MULTICOLOR TOTAL)
            ========================================================================== */
         .sky-storm {
             position: absolute;
@@ -41,17 +94,17 @@
 
         .firework-particle {
             position: absolute;
-            width: 8px;
-            height: 8px;
+            width: 13px;
+            height: 13px;
             border-radius: 50%;
-            animation: explodeRealSpark 1.2s infinite ease-out;
+            animation: explodeMassiveHeavy 1.5s infinite ease-out;
         }
 
-        @keyframes explodeRealSpark {
+        @keyframes explodeMassiveHeavy {
             0% {
-                transform: translate(0, 0) scale(1.6);
+                transform: translate(0, 0) scale(2.5);
                 opacity: 1;
-                box-shadow: 0 0 15px #fff, 0 0 30px #ffd700, 0 0 45px #ff1744;
+                box-shadow: 0 0 25px #fff, 0 0 50px #ffea00, 0 0 80px #00e5ff, 0 0 110px #ff1744;
             }
             100% {
                 transform: translate(var(--tx), var(--ty)) scale(0.2);
@@ -61,7 +114,33 @@
         }
 
         /* ==========================================================================
-           3. CAPA DE GLOBOS CRUZADOS (TONOS DORADOS, AMARILLOS Y ROJOS)
+           4. LLUVIA MASIVA DE CONFETI, ESTRELLAS Y SERPENTINAS PESADAS
+           ========================================================================== */
+        .confetti-rain {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 4;
+        }
+
+        .confetti-piece {
+            position: absolute;
+            width: 16px;
+            height: 22px;
+            opacity: 0.95;
+            animation: fallConfettiHeavy 3s infinite linear;
+        }
+
+        @keyframes fallConfettiHeavy {
+            0% { transform: translateY(-10vh) rotate(0deg) translateX(0); opacity: 1; }
+            100% { transform: translateY(110vh) rotate(1080deg) translateX(100px); opacity: 0.3; }
+        }
+
+        /* ==========================================================================
+           5. LLUVIA DE GLOBOS GIGANTES (AZUL, VERDE, AMARILLO, ROJO, NARANJA, CELESTE)
            ========================================================================== */
         .balloons-storm {
             position: absolute;
@@ -73,50 +152,34 @@
             z-index: 2;
         }
 
-        .b-up {
+        .b-item {
             position: absolute;
-            width: 70px;
-            height: 90px;
+            width: 85px;
+            height: 110px;
             border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
-            animation: stormUp 4.2s infinite linear;
-            background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.95) 0%, rgba(211,47,47,0.7) 75%);
-            box-shadow: inset -12px -18px 30px rgba(80,0,0,0.6), 0 0 35px rgba(255,215,0,0.8);
-            opacity: 0.95;
+            animation: stormFloatHeavy 4.2s infinite linear;
+            box-shadow: inset -14px -20px 35px rgba(0,0,0,0.55), 0 0 35px rgba(255,255,255,0.9);
+            opacity: 0.96;
         }
 
-        .b-down {
-            position: absolute;
-            width: 70px;
-            height: 90px;
-            border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
-            animation: stormDown 4.6s infinite linear;
-            background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.95) 0%, rgba(255,193,7,0.7) 75%);
-            box-shadow: inset -12px -18px 30px rgba(120,60,0,0.6), 0 0 35px rgba(255,87,34,0.8);
-            opacity: 0.95;
-        }
-
-        .b-up::after, .b-down::after {
+        .b-item::after {
             content: "";
             position: absolute;
-            bottom: -18px;
-            left: 33px;
+            bottom: -22px;
+            left: 40px;
             width: 2px;
-            height: 35px;
-            background: rgba(255,255,255,0.9);
+            height: 38px;
+            background: rgba(255,255,255,0.95);
         }
 
-        @keyframes stormUp {
-            0% { transform: translateY(115vh) translateX(0) rotate(0deg) scale(0.9); }
-            100% { transform: translateY(-25vh) translateX(60px) rotate(20deg) scale(1.2); }
-        }
-
-        @keyframes stormDown {
-            0% { transform: translateY(-25vh) translateX(0) rotate(0deg) scale(1.2); }
-            100% { transform: translateY(115vh) translateX(-60px) rotate(-20deg) scale(0.9); }
+        @keyframes stormFloatHeavy {
+            0% { transform: translateY(115vh) translateX(0) scale(0.9); }
+            50% { transform: translateY(50vh) translateX(40px) scale(1.1); }
+            100% { transform: translateY(-20vh) translateX(-40px) scale(1.25); }
         }
 
         /* ==========================================================================
-           4. CONTENEDOR ESCENARIO COLOSAL
+           6. CONTENEDOR ESCENARIO PRINCIPAL
            ========================================================================== */
         .colossal-stage {
             position: relative;
@@ -127,46 +190,46 @@
             justify-content: flex-end;
             width: 100%;
             height: 100vh;
-            padding-bottom: 20px;
+            padding-bottom: 12px;
             text-align: center;
             pointer-events: none;
         }
 
         /* ==========================================================================
-           5. TÍTULO PRINCIPAL FLOTANTE (DELANTE DE LAS VELAS, PROTEGIDO)
+           7. TÍTULO PRINCIPAL (INTACTO Y PERFECTO)
            ========================================================================== */
         h1 {
             position: relative;
             z-index: 100;
-            font-size: 2.5rem;
+            font-size: 2.3rem;
             font-weight: 900;
             text-transform: uppercase;
-            margin: 0 0 10px 0;
+            margin: 0 0 8px 0;
             background: linear-gradient(135deg, #ffffff 15%, #ffe57f 40%, #ff5252 80%, #ff1744 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            filter: drop-shadow(0 0 30px rgba(255, 235, 59, 1)) drop-shadow(0 0 20px rgba(255, 23, 68, 1));
-            letter-spacing: 2px;
+            filter: drop-shadow(0 0 25px rgba(0, 0, 0, 0.95)) drop-shadow(0 0 20px rgba(255, 23, 68, 1));
+            letter-spacing: 1.5px;
             animation: textFloatEffect 2.5s ease-in-out infinite alternate;
             pointer-events: auto;
         }
 
         @keyframes textFloatEffect {
             0% { transform: translateY(0) scale(1); }
-            100% { transform: translateY(-10px) scale(1.03); }
+            100% { transform: translateY(-8px) scale(1.02); }
         }
 
         /* ==========================================================================
-           6. PASTEL GIGANTE Y REALISTA (VAINILLA FINA CON RELIEVE Y SOMBRAS)
+           8. PASTEL GIGANTE PESADO, DETALLADO Y LLENO DE DECORACIONES
            ========================================================================== */
         .mega-cake {
             position: relative;
             z-index: 10;
-            width: 780px;
-            height: 420px;
+            width: 860px;
+            height: 460px;
             margin: 0 auto;
             animation: cakeBreathingMega 3s ease-in-out infinite;
-            filter: drop-shadow(0 40px 40px rgba(30,0,0,0.7));
+            filter: drop-shadow(0 45px 45px rgba(30,5,0,0.9));
             pointer-events: auto;
         }
 
@@ -179,114 +242,123 @@
             position: absolute;
             left: 50%;
             transform: translateX(-50%);
-            border-radius: 28px;
+            border-radius: 30px;
         }
 
-        /* Capa Base Realista */
+        /* Capa Base del Pastel (Gran Tamaño) */
         .tier-base {
             bottom: 0;
-            width: 780px;
-            height: 145px;
-            background: linear-gradient(180deg, #fff3d1 0%, #e2be84 100%);
-            border-bottom: 10px solid #5c3209;
-            box-shadow: inset 0 18px 30px rgba(255,255,255,0.95), inset 0 -18px 30px rgba(92,50,9,0.4);
+            width: 860px;
+            height: 155px;
+            background: linear-gradient(90deg, #d7ccc8, #fff8e1, #d7ccc8);
+            border: 5px solid #6d4c41;
+            border-bottom: 14px solid #3e2723;
+            box-shadow: inset 0 22px 35px rgba(255,255,255,0.95), inset 0 -22px 35px rgba(62,39,35,0.6);
         }
 
-        /* Capa Media Realista */
+        /* Capa Intermedia del Pastel */
         .tier-middle {
-            bottom: 135px;
-            width: 610px;
-            height: 135px;
-            background: linear-gradient(180deg, #fffaf0, #ebd09d);
-            border-bottom: 9px solid #5c3209;
-            box-shadow: inset 0 15px 25px rgba(255,255,255,0.95), inset 0 -15px 25px rgba(92,50,9,0.35);
+            bottom: 143px;
+            width: 680px;
+            height: 145px;
+            background: linear-gradient(90deg, #ffcdd2, #fff9c4, #ffcdd2);
+            border: 5px solid #e57373;
+            border-bottom: 12px solid #b71c1c;
+            box-shadow: inset 0 20px 30px rgba(255,255,255,0.95), inset 0 -20px 30px rgba(183,28,28,0.5);
         }
 
-        /* Capa Superior Realista */
+        /* Capa Superior del Pastel */
         .tier-top {
-            bottom: 260px;
-            width: 440px;
-            height: 125px;
-            background: linear-gradient(180deg, #ffffff, #f4e3be);
-            border-bottom: 8px solid #5c3209;
-            box-shadow: inset 0 12px 22px rgba(255,255,255,1), inset 0 -12px 22px rgba(92,50,9,0.3);
+            bottom: 278px;
+            width: 500px;
+            height: 135px;
+            background: linear-gradient(90deg, #b9f6ca, #e0f7fa, #b9f6ca);
+            border: 5px solid #00e676;
+            border-bottom: 10px solid #00c853;
+            box-shadow: inset 0 18px 28px rgba(255,255,255,1), inset 0 -18px 28px rgba(0,200,83,0.5);
         }
 
-        /* Cobertura Realista Brillante */
+        /* Rellenos multicolores visibles entre capas (Bizcocho gourmet) */
+        .cake-filling-multi {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 20px;
+            background: repeating-linear-gradient(45deg, #ff1744, #ff1744 10px, #ffea00 10px, #ffea00 20px, #00b0ff 20px, #00b0ff 30px);
+            border-radius: 0 0 12px 12px;
+            box-shadow: 0 5px 10px rgba(0,0,0,0.6);
+        }
+
+        /* Cobertura Glaseado de Fresa / Chocolate goteando con alto brillo */
         .frosting-mega {
             position: absolute;
             top: 0;
             width: 100%;
-            height: 36px;
-            background: linear-gradient(180deg, #ffffff 0%, #ffecb3 100%);
-            border-radius: 20px;
-            box-shadow: 0 10px 20px rgba(92,50,9,0.25);
+            height: 40px;
+            background: linear-gradient(180deg, #ff4081 0%, #880e4f 100%);
+            border-radius: 22px;
+            box-shadow: 0 12px 22px rgba(0,0,0,0.4);
+        }
+
+        /* Decoraciones extra incrustadas en el pastel (Bolitas de colores comestibles) */
+        .cake-sprinkle {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            box-shadow: 0 0 8px #fff;
+            z-index: 5;
         }
 
         /* ==========================================================================
-           7. VELAS, LLAMAS Y CHISPAS
+           9. VELAS Y LLAMAS GIGANTES MÚLTIPLES
            ========================================================================== */
         .candles-mega-row {
             position: absolute;
-            top: -85px;
+            top: -90px;
             left: 50%;
             transform: translateX(-50%);
             display: flex;
-            gap: 85px;
+            gap: 75px;
             z-index: 15;
         }
 
         .candle-stick-mega {
-            width: 20px;
-            height: 88px;
-            background: linear-gradient(90deg, #d32f2f, #ff5252, #8e0000);
+            width: 22px;
+            height: 95px;
+            background: linear-gradient(90deg, #00e676, #00b0ff, #ffea00, #ff1744);
             border-radius: 6px;
             position: relative;
-            box-shadow: inset -5px 0 10px rgba(0,0,0,0.6), 0 0 25px rgba(255,23,68,1);
+            box-shadow: inset -5px 0 10px rgba(0,0,0,0.5), 0 0 30px rgba(0,230,118,0.9);
         }
 
         .mega-flame {
             position: absolute;
-            top: -50px;
+            top: -55px;
             left: 50%;
             transform: translateX(-50%);
-            width: 30px;
-            height: 52px;
-            background: radial-gradient(circle at 50% 25%, #ffffff 15%, #ffeb3b 45%, #ff3d00 80%, rgba(255,0,0,0) 100%);
+            width: 35px;
+            height: 58px;
+            background: radial-gradient(circle at 50% 25%, #ffffff 15%, #ffea00 45%, #ff3d00 80%, rgba(255,0,0,0) 100%);
             border-radius: 50% 50% 20% 20%;
-            box-shadow: 0 0 40px #ffeb3b, 0 0 75px #ff3d00, 0 0 110px #ff1744, 0 0 140px #ffffff;
+            box-shadow: 0 0 45px #ffea00, 0 0 85px #ff3d00, 0 0 120px #ff1744, 0 0 150px #00e5ff;
             animation: flameMegaFlicker 0.25s infinite alternate;
         }
 
         @keyframes flameMegaFlicker {
             0% { transform: translateX(-50%) scale(0.9) rotate(-6deg); filter: brightness(1); }
-            100% { transform: translateX(-50%) scale(1.25) rotate(6deg); filter: brightness(1.5); }
-        }
-
-        .mega-spark {
-            position: absolute;
-            width: 9px;
-            height: 9px;
-            background: #ffffff;
-            border-radius: 50%;
-            box-shadow: 0 0 18px #ffd700, 0 0 30px #ff3d00, 0 0 40px #ff1744;
-            animation: sparkMegaPhysics 0.6s infinite linear;
-        }
-
-        @keyframes sparkMegaPhysics {
-            0% { transform: translate(0, 0) scale(1.5); opacity: 1; }
-            100% { transform: translate(calc(var(--mx) * 85px), calc(var(--my) * 85px)) scale(0); opacity: 0; }
+            100% { transform: translateX(-50%) scale(1.3) rotate(6deg); filter: brightness(1.5); }
         }
 
         /* ==========================================================================
-           8. TEXTO ROMÁNTICO FLOTANTE INFERIOR
+           10. TEXTO ROMÁNTICO Y BOTÓN ESTELAR
            ========================================================================== */
         .love-text-floating {
             font-family: 'Cinzel', serif;
-            font-size: 1.9rem;
+            font-size: 1.8rem;
             font-weight: 900;
             color: #fffae6;
-            margin: 12px 0 18px 0;
+            margin: 6px 0 10px 0;
             text-shadow: 0 0 25px rgba(255, 235, 59, 1), 0 0 45px rgba(255, 23, 68, 0.9), 3px 3px 10px rgba(0,0,0,0.9);
             letter-spacing: 1.5px;
             text-align: center;
@@ -296,113 +368,118 @@
 
         @keyframes textFloatingMovement {
             0% { transform: translateY(0) rotate(-1deg); }
-            100% { transform: translateY(-10px) rotate(1deg); }
+            100% { transform: translateY(-8px) rotate(1deg); }
         }
 
-        /* ==========================================================================
-           9. BOTÓN ESTELAR DE NAVEGACIÓN
-           ========================================================================== */
         .btn-colossal {
-            background: linear-gradient(135deg, #ffd700, #ff1744);
+            background: linear-gradient(135deg, #00e676, #00b0ff, #ffea00, #ff1744);
             color: #ffffff;
-            padding: 15px 45px;
-            border-radius: 40px;
+            padding: 14px 42px;
+            border-radius: 35px;
             font-weight: 900;
             text-decoration: none;
             font-size: 1.1rem;
-            box-shadow: 0 0 40px rgba(255, 215, 0, 0.9);
+            box-shadow: 0 0 40px rgba(0, 230, 118, 0.9);
             transition: transform 0.3s ease;
             display: inline-block;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
             pointer-events: auto;
         }
 
         .btn-colossal:hover {
             transform: scale(1.15);
         }
-
-        /* ==========================================================================
-           10. BLOQUES DE EXTENSIÓN DETALLADOS PARA GARANTIZAR > 500 LÍNEAS
-           ========================================================================== */
-        .ext-detail-01 { width: 1px; height: 1px; display: none; }
-        .ext-detail-02 { width: 1px; height: 1px; display: none; }
-        .ext-detail-03 { width: 1px; height: 1px; display: none; }
-        .ext-detail-04 { width: 1px; height: 1px; display: none; }
-        .ext-detail-05 { width: 1px; height: 1px; display: none; }
-        .ext-detail-06 { width: 1px; height: 1px; display: none; }
-        .ext-detail-07 { width: 1px; height: 1px; display: none; }
-        .ext-detail-08 { width: 1px; height: 1px; display: none; }
-        .ext-detail-09 { width: 1px; height: 1px; display: none; }
-        .ext-detail-10 { width: 1px; height: 1px; display: none; }
-        .ext-detail-11 { width: 1px; height: 1px; display: none; }
-        .ext-detail-12 { width: 1px; height: 1px; display: none; }
-        .ext-detail-13 { width: 1px; height: 1px; display: none; }
-        .ext-detail-14 { width: 1px; height: 1px; display: none; }
-        .ext-detail-15 { width: 1px; height: 1px; display: none; }
-        .ext-detail-16 { width: 1px; height: 1px; display: none; }
-        .ext-detail-17 { width: 1px; height: 1px; display: none; }
-        .ext-detail-18 { width: 1px; height: 1px; display: none; }
-        .ext-detail-19 { width: 1px; height: 1px; display: none; }
-        .ext-detail-20 { width: 1px; height: 1px; display: none; }
-        .ext-detail-21 { width: 1px; height: 1px; display: none; }
-        .ext-detail-22 { width: 1px; height: 1px; display: none; }
-        .ext-detail-23 { width: 1px; height: 1px; display: none; }
-        .ext-detail-24 { width: 1px; height: 1px; display: none; }
-        .ext-detail-25 { width: 1px; height: 1px; display: none; }
-        .ext-detail-26 { width: 1px; height: 1px; display: none; }
-        .ext-detail-27 { width: 1px; height: 1px; display: none; }
-        .ext-detail-28 { width: 1px; height: 1px; display: none; }
-        .ext-detail-29 { width: 1px; height: 1px; display: none; }
-        .ext-detail-30 { width: 1px; height: 1px; display: none; }
-        .ext-detail-31 { width: 1px; height: 1px; display: none; }
-        .ext-detail-32 { width: 1px; height: 1px; display: none; }
-        .ext-detail-33 { width: 1px; height: 1px; display: none; }
-        .ext-detail-34 { width: 1px; height: 1px; display: none; }
-        .ext-detail-35 { width: 1px; height: 1px; display: none; }
     </style>
 </head>
 <body>
 
-    <!-- Sistema de fuegos artificiales gigantescos con chispas de colores reales -->
+    <!-- Fila 1 de Guirnaldas de banderines multicolores -->
+    <div class="garland-container">
+        <div class="pennant p-green"></div>
+        <div class="pennant p-sky"></div>
+        <div class="pennant p-yellow"></div>
+        <div class="pennant p-red"></div>
+        <div class="pennant p-orange"></div>
+        <div class="pennant p-blue"></div>
+        <div class="pennant p-pink"></div>
+        <div class="pennant p-cyan"></div>
+        <div class="pennant p-green"></div>
+        <div class="pennant p-sky"></div>
+        <div class="pennant p-yellow"></div>
+        <div class="pennant p-red"></div>
+        <div class="pennant p-orange"></div>
+    </div>
+
+    <!-- Fila 2 de Guirnaldas de banderines cruzados -->
+    <div class="garland-container-2">
+        <div class="pennant p-pink"></div>
+        <div class="pennant p-cyan"></div>
+        <div class="pennant p-green"></div>
+        <div class="pennant p-sky"></div>
+        <div class="pennant p-yellow"></div>
+        <div class="pennant p-red"></div>
+        <div class="pennant p-orange"></div>
+        <div class="pennant p-blue"></div>
+        <div class="pennant p-pink"></div>
+        <div class="pennant p-cyan"></div>
+        <div class="pennant p-green"></div>
+        <div class="pennant p-sky"></div>
+    </div>
+
+    <!-- Fuegos artificiales colosales de fondo -->
     <div class="sky-storm" id="skyStorm"></div>
 
-    <!-- Lluvia de globos cruzados en tonos dorados, amarillos y rojos -->
+    <!-- Lluvia masiva de confeti y serpentinas pesadas -->
+    <div class="confetti-rain" id="confettiRain"></div>
+
+    <!-- Lluvia masiva de globos de colores vivos -->
     <div class="balloons-storm" id="balloonsStorm"></div>
 
-    <!-- Escenario colosal principal -->
+    <!-- Escenario principal -->
     <div class="colossal-stage">
         
-        <!-- Título principal protegido al frente absoluto -->
+        <!-- Título principal protegido e intacto -->
         <h1>¡FELIZ CUMPLEAÑOS A LA NIÑA MÁS HERMOSA DEL MUNDOOOOOO!</h1>
 
-        <!-- Pastel Colosal Gigante y Realista de Vainilla -->
+        <!-- Pastel Colosal Gigante con decoraciones de confeti, bizcochos y 5 velas -->
         <div class="mega-cake">
             <div class="candles-mega-row">
-                <div class="candle-stick-mega">
-                    <div class="mega-flame"></div>
-                    <div class="mega-spark" style="--mx: -2.0; --my: -2.8;"></div>
-                    <div class="mega-spark" style="--mx: 1.8; --my: -3.1;"></div>
-                </div>
-                <div class="candle-stick-mega">
-                    <div class="mega-flame"></div>
-                    <div class="mega-spark" style="--mx: -1.2; --my: -3.4;"></div>
-                    <div class="mega-spark" style="--mx: 1.5; --my: -2.7;"></div>
-                </div>
-                <div class="candle-stick-mega">
-                    <div class="mega-flame"></div>
-                    <div class="mega-spark" style="--mx: -1.7; --my: -3.0;"></div>
-                    <div class="mega-spark" style="--mx: 2.1; --my: -3.2;"></div>
-                </div>
-                <div class="candle-stick-mega">
-                    <div class="mega-flame"></div>
-                    <div class="mega-spark" style="--mx: -1.5; --my: -2.9;"></div>
-                    <div class="mega-spark" style="--mx: 1.3; --my: -3.0;"></div>
-                </div>
+                <div class="candle-stick-mega"><div class="mega-flame"></div></div>
+                <div class="candle-stick-mega"><div class="mega-flame"></div></div>
+                <div class="candle-stick-mega"><div class="mega-flame"></div></div>
+                <div class="candle-stick-mega"><div class="mega-flame"></div></div>
+                <div class="candle-stick-mega"><div class="mega-flame"></div></div>
             </div>
 
-            <div class="m-tier tier-top"><div class="frosting-mega"></div></div>
-            <div class="m-tier tier-middle"><div class="frosting-mega"></div></div>
-            <div class="m-tier tier-base"><div class="frosting-mega"></div></div>
+            <!-- Capa Superior con decoraciones -->
+            <div class="m-tier tier-top">
+                <div class="cake-filling-multi"></div>
+                <div class="frosting-mega"></div>
+                <div class="cake-sprinkle" style="top: 10px; left: 80px; background: #ffea00;"></div>
+                <div class="cake-sprinkle" style="top: 15px; left: 200px; background: #00e676;"></div>
+                <div class="cake-sprinkle" style="top: 12px; left: 350px; background: #00b0ff;"></div>
+                <div class="cake-sprinkle" style="top: 18px; left: 420px; background: #ff1744;"></div>
+            </div>
+
+            <!-- Capa Intermedia con decoraciones -->
+            <div class="m-tier tier-middle">
+                <div class="cake-filling-multi"></div>
+                <div class="frosting-mega"></div>
+                <div class="cake-sprinkle" style="top: 12px; left: 100px; background: #00e5ff;"></div>
+                <div class="cake-sprinkle" style="top: 16px; left: 250px; background: #ffea00;"></div>
+                <div class="cake-sprinkle" style="top: 10px; left: 400px; background: #00e676;"></div>
+                <div class="cake-sprinkle" style="top: 15px; left: 550px; background: #ff9100;"></div>
+            </div>
+
+            <!-- Capa Base con decoraciones -->
+            <div class="m-tier tier-base">
+                <div class="cake-filling-multi"></div>
+                <div class="frosting-mega"></div>
+                <div class="cake-sprinkle" style="top: 14px; left: 150px; background: #ff1744;"></div>
+                <div class="cake-sprinkle" style="top: 12px; left: 320px; background: #00b0ff;"></div>
+                <div class="cake-sprinkle" style="top: 18px; left: 500px; background: #ffea00;"></div>
+                <div class="cake-sprinkle" style="top: 10px; left: 700px; background: #7c4dff;"></div>
+            </div>
         </div>
 
         <!-- Mensaje romántico -->
@@ -412,83 +489,57 @@
         <a href="index.html" class="btn-colossal">⬅ Volver al multiverso</a>
     </div>
 
-    <!-- Motor JavaScript Extendido con Fuegos Gigantescos y Globos Multicolor -->
+    <!-- Motor JavaScript masivo con más densidad, colores y peso -->
     <script>
-        /* ======================================================================
-           MOTOR DE FUEGOS ARTIFICIALES GIGANTES (ROJO, DORADO, AMARILLO Y CHISPAS)
-           ====================================================================== */
+        /* Fuegos artificiales gigantes con todos los colores vibrantes */
         const skyStorm = document.getElementById('skyStorm');
-        const fireworkRealColors = ['#ffd700', '#ffeb3b', '#ff1744', '#ff5722', '#ffffff', '#ff9100'];
+        const fireworkColors = ['#00e676', '#00b0ff', '#ffea00', '#ff1744', '#ff9100', '#7c4dff', '#ff4081', '#00e5ff', '#ffffff'];
 
-        function lanzarFuegoRealGigante() {
-            const centerX = Math.random() * 88 + 6;
+        function lanzarFuegoGigantePesado() {
+            const centerX = Math.random() * 85 + 7;
             const centerY = Math.random() * 60 + 10;
-            const numParticles = 32; // Más partículas para que sean más grandes e impactantes
-
-            for (let i = 0; i < numParticles; i++) {
+            for (let i = 0; i < 48; i++) {
                 const p = document.createElement('div');
                 p.classList.add('firework-particle');
-                
-                const angle = (Math.PI * 2 / numParticles) * i;
-                const distance = 70 + Math.random() * 110; // Radio de explosión masivo
-                const tx = Math.cos(angle) * distance;
-                const ty = Math.sin(angle) * distance;
-
+                const angle = (Math.PI * 2 / 48) * i;
+                const distance = 100 + Math.random() * 140;
                 p.style.left = centerX + 'vw';
                 p.style.top = centerY + 'vh';
-                p.style.backgroundColor = fireworkRealColors[Math.floor(Math.random() * fireworkRealColors.length)];
-                p.style.setProperty('--tx', tx + 'px');
-                p.style.setProperty('--ty', ty + 'px');
-
+                p.style.backgroundColor = fireworkColors[Math.floor(Math.random() * fireworkColors.length)];
+                p.style.setProperty('--tx', Math.cos(angle) * distance + 'px');
+                p.style.setProperty('--ty', Math.sin(angle) * distance + 'px');
                 skyStorm.appendChild(p);
-                setTimeout(() => p.remove(), 1200);
+                setTimeout(() => p.remove(), 1500);
             }
         }
+        setInterval(lanzarFuegoGigantePesado, 350);
 
-        setInterval(lanzarFuegoRealGigante, 500);
+        /* Confeti masivo cayendo sin parar */
+        const confettiRain = document.getElementById('confettiRain');
+        for (let i = 0; i < 110; i++) {
+            const c = document.createElement('div');
+            c.classList.add('confetti-piece');
+            c.style.left = Math.random() * 100 + 'vw';
+            c.style.backgroundColor = fireworkColors[Math.floor(Math.random() * fireworkColors.length)];
+            c.style.animationDuration = (2.0 + Math.random() * 2.8) + 's';
+            c.style.animationDelay = (Math.random() * 4) + 's';
+            if(Math.random() > 0.3) c.style.borderRadius = '50%';
+            confettiRain.appendChild(c);
+        }
 
-        /* ======================================================================
-           MOTOR DE GLOBOS MULTICOLOR CRUZADOS (DORADOS, AMARILLOS Y ROJOS)
-           ====================================================================== */
+        /* Globos gigantes saturados de azul, verde, amarillo, rojo, naranja, celeste y más */
         const balloonsStorm = document.getElementById('balloonsStorm');
-        const balloonRealPalette = ['#ffd700', '#ffeb3b', '#ff1744', '#ff5252', '#ffc107', '#ff9100', '#e53935'];
+        const vibrantBalloonColors = ['#00e676', '#00b0ff', '#ffea00', '#ff1744', '#ff9100', '#7c4dff', '#ff4081', '#00e5ff'];
 
-        for (let i = 0; i < 50; i++) {
+        for (let i = 0; i < 95; i++) {
             const b = document.createElement('div');
-            const isUp = i % 2 === 0;
-            b.classList.add(isUp ? 'b-up' : 'b-down');
-            
-            b.style.left = (Math.random() * 94) + 'vw';
-            b.style.backgroundColor = balloonRealPalette[Math.floor(Math.random() * balloonRealPalette.length)];
-            b.style.animationDuration = (3.2 + Math.random() * 2.5) + 's';
-            b.style.animationDelay = (Math.random() * 4) + 's';
+            b.classList.add('b-item');
+            b.style.left = (Math.random() * 95) + 'vw';
+            b.style.backgroundColor = vibrantBalloonColors[Math.floor(Math.random() * vibrantBalloonColors.length)];
+            b.style.animationDuration = (2.8 + Math.random() * 2.5) + 's';
+            b.style.animationDelay = (Math.random() * 5) + 's';
             balloonsStorm.appendChild(b);
         }
-
-        /* ======================================================================
-           DIAGNÓSTICO Y LOG INTERNO DEL SISTEMA
-           ====================================================================== */
-        function verificarEscenarioVisualRealista() {
-            const reporteReal = {
-                fondoMulticolorDoradoRojoAmarillo: true,
-                pastelGiganteVainillaRealista: true,
-                fuegosGigantesConChispas: true,
-                globosCruzadosActivos: 50,
-                tituloProtegidoAlFrente: true,
-                totalLineasSuperado: "Más de 500 líneas"
-            };
-            return reporteReal;
-        }
-
-        console.info("Renderizado de alta gama completado:", verificarEscenarioVisualRealista());
-
-        const moduloAvanzadoSoporte = function() {
-            let val = 0;
-            for(let k=0; k<20; k++) { val += k * 1.1; }
-            return "Validación de física de chispas OK.";
-        };
-
-        console.log(moduloAvanzadoSoporte());
     </script>
 </body>
 </html>
