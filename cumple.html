@@ -2,76 +2,221 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Para mi princesa 🌻✨</title>
+    <title>¡Feliz Cumpleaños, Mi Amor! 🌻✨</title>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
-        body, html { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; background: #0a020d; font-family: 'Playfair Display', serif; }
-        
-        /* Fuegos artificiales de fondo */
-        .sky { position: absolute; width: 100%; height: 100%; z-index: 1; pointer-events: none; }
-        
-        /* Pastel Realista y Grande */
-        .cake-wrapper {
-            position: absolute; top: 45%; left: 50%; transform: translate(-50%, -50%);
-            z-index: 5; text-align: center;
-        }
-        .cake-3d {
-            width: 400px; height: 300px; margin: 0 auto;
-            background: radial-gradient(circle at 50% 50%, #fffaf0 20%, #f5e6d3 100%);
-            border-radius: 20px 20px 10px 10px;
-            box-shadow: 0 0 50px rgba(255, 215, 0, 0.3);
+        * { box-sizing: border-box; }
+        body, html {
+            margin: 0; padding: 0; width: 100%; height: 100vh;
+            background: radial-gradient(circle at center, #1b0c1e 0%, #0d0410 100%);
+            font-family: 'Poppins', sans-serif;
+            overflow: hidden;
             display: flex; flex-direction: column; align-items: center; justify-content: center;
-            border-bottom: 20px solid #d4a373;
         }
 
-        /* Título Vibrante */
-        .title-bday {
-            font-size: 3rem; color: #ffeb3b; text-transform: uppercase;
-            text-shadow: 0 0 20px #ff007f, 0 0 40px #ff007f;
-            margin-bottom: 30px; animation: pulse 2s infinite;
+        /* Fuegos artificiales y luces de fondo */
+        .fireworks-container {
+            position: absolute; width: 100%; height: 100%; top: 0; left: 0; pointer-events: none; z-index: 1;
+        }
+        .firework {
+            position: absolute; width: 5px; height: 5px; border-radius: 50%;
+            box-shadow: 0 0 15px #ffeb3b, 0 0 30px #ff007f, 0 0 45px #00e676;
+            animation: explode 1.5s infinite ease-out;
+        }
+        @keyframes explode {
+            0% { transform: scale(0.1); opacity: 1; }
+            50% { transform: scale(25); opacity: 0.8; }
+            100% { transform: scale(40); opacity: 0; }
         }
 
-        /* Texto Romántico */
-        .love-text {
-            font-size: 2.2rem; color: #fff; max-width: 800px; margin: 20px auto;
-            text-shadow: 2px 2px 10px rgba(0,0,0,0.8); font-style: italic;
+        /* Globos realistas flotando y cayendo */
+        .balloons-container {
+            position: absolute; width: 100%; height: 100%; top: 0; left: 0; pointer-events: none; z-index: 2;
+        }
+        .balloon-real {
+            position: absolute; width: 45px; height: 55px; border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
+            animation: floatDownUp 7s infinite ease-in-out;
+            opacity: 0.85; box-shadow: inset -6px -6px 15px rgba(0,0,0,0.3), 0 0 15px rgba(255,255,255,0.2);
+        }
+        .balloon-real::after {
+            content: ""; position: absolute; bottom: -10px; left: 20px; width: 2px; height: 20px; background: rgba(255,255,255,0.5);
+        }
+        @keyframes floatDownUp {
+            0% { transform: translateY(-10vh) translateX(0) rotate(0deg); }
+            50% { transform: translateY(50vh) translateX(30px) rotate(5deg); }
+            100% { transform: translateY(110vh) translateX(-20px) rotate(-5deg); }
         }
 
-        @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
-        
-        /* Botón volver */
-        .back-btn {
-            position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%);
-            background: #ff007f; color: white; padding: 15px 30px; border-radius: 50px;
-            text-decoration: none; font-weight: bold; z-index: 10;
+        /* Contenido principal centrado ocupando gran parte de la pantalla */
+        .main-wrapper {
+            position: relative; z-index: 10; display: flex; flex-direction: column; align-items: center; justify-content: center;
+            width: 90%; max-width: 900px; text-align: center;
         }
+
+        /* TÍTULO VIBRANTE */
+        h1 {
+            font-size: 2.3rem; font-weight: 800; text-transform: uppercase; margin: 0 0 15px 0;
+            background: linear-gradient(45deg, #ff007f, #ffeb3b, #00e676, #00b0ff, #ff4081);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 0 20px rgba(255, 235, 59, 0.7));
+            animation: titleGlow 2s infinite alternate;
+        }
+        @keyframes titleGlow {
+            from { filter: drop-shadow(0 0 10px rgba(255, 0, 127, 0.6)); }
+            to { filter: drop-shadow(0 0 25px rgba(255, 235, 59, 1)); }
+        }
+
+        /* PASTEL GIGANTE CASI REALISTA */
+        .cake-large {
+            position: relative; width: 340px; height: 210px; margin: 10px auto;
+            animation: floatCake 3s ease-in-out infinite;
+        }
+        @keyframes floatCake {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+
+        /* Capas de Vainilla */
+        .cake-layer {
+            position: absolute; left: 50%; transform: translateX(-50%); border-radius: 12px;
+        }
+        .layer-bottom {
+            bottom: 0; width: 340px; height: 75px;
+            background: linear-gradient(90deg, #d7ccc8, #f5f5f5, #d7ccc8);
+            border: 3px solid #bcaaa4; box-shadow: 0 15px 30px rgba(0,0,0,0.6);
+        }
+        .layer-middle {
+            bottom: 70px; width: 270px; height: 65px;
+            background: linear-gradient(90deg, #ffe0b2, #fff9c4, #ffe0b2);
+            border: 3px solid #ffe082;
+        }
+        .layer-top {
+            bottom: 130px; width: 200px; height: 55px;
+            background: linear-gradient(90deg, #ffccbc, #ffebee, #ffccbc);
+            border: 3px solid #ffab91;
+        }
+        /* Glaseado estético goteando */
+        .frosting-drip {
+            position: absolute; top: 0; width: 100%; height: 18px; background: #fff; border-radius: 10px;
+            box-shadow: 0 5px 10px rgba(0,0,0,0.15);
+        }
+
+        /* Velas explosivas con chispas */
+        .candles-box {
+            position: absolute; top: -45px; left: 50%; transform: translateX(-50%); display: flex; gap: 30px; z-index: 5;
+        }
+        .candle-stick {
+            width: 12px; height: 50px; background: linear-gradient(to top, #ff4081, #ff80ab, #ffffff);
+            border-radius: 4px; position: relative; box-shadow: 0 0 10px rgba(255,64,129,0.5);
+        }
+        .flame-real {
+            position: absolute; top: -25px; left: 50%; transform: translateX(-50%); width: 16px; height: 26px;
+            background: radial-gradient(circle, #fff 15%, #ffeb3b 50%, #ff5722 100%);
+            border-radius: 50% 50% 20% 20%;
+            box-shadow: 0 0 20px #ffeb3b, 0 0 35px #ff5722, 0 0 50px #ff007f;
+            animation: flameFlicker 0.4s infinite alternate;
+        }
+        @keyframes flameFlicker {
+            0% { transform: translateX(-50%) scale(1) rotate(-4deg); }
+            100% { transform: translateX(-50%) scale(1.15) rotate(4deg); }
+        }
+        /* Chispas explosivas saliendo de las velas */
+        .sparkle {
+            position: absolute; width: 5px; height: 5px; background: #fff; border-radius: 50%;
+            box-shadow: 0 0 8px #ffeb3b, 0 0 12px #ff007f;
+            animation: explodeSpark 1s infinite linear;
+        }
+        @keyframes explodeSpark {
+            0% { transform: translate(0, 0) scale(1); opacity: 1; }
+            100% { transform: translate(calc(var(--dx) * 45px), calc(var(--dy) * 45px)) scale(0); opacity: 0; }
+        }
+
+        /* TEXTO ROMÁNTICO SOLICITADO */
+        .love-message {
+            font-family: 'Great Vibes', cursive;
+            font-size: 2.8rem;
+            color: #ffd700;
+            margin: 20px 0 15px 0;
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.8), 2px 2px 5px rgba(0,0,0,0.9);
+            line-height: 1.2;
+        }
+
+        /* Botón regresar */
+        .btn-multiverse {
+            background: linear-gradient(135deg, #ff007f, #ff758c);
+            color: #fff; padding: 10px 25px; border-radius: 30px; font-weight: 600;
+            text-decoration: none; font-size: 0.95rem; box-shadow: 0 0 20px rgba(255,0,127,0.6);
+            transition: transform 0.3s ease; display: inline-block;
+        }
+        .btn-multiverse:hover { transform: scale(1.08); }
     </style>
 </head>
 <body>
 
-    <div class="sky" id="fireworks"></div>
+    <!-- Fuegos artificiales animados de fondo -->
+    <div class="fireworks-container" id="fwContainer"></div>
 
-    <div class="cake-wrapper">
-        <h1 class="title-bday">¡FELIZ CUMPLEAÑOS A LA NIÑA MÁS HERMOSA DEL MUNDOOOOOO!</h1>
-        
-        <div class="cake-3d">
-            <div style="font-size: 5rem;">🎂</div>
+    <!-- Globos realistas cayendo y flotando -->
+    <div class="balloons-container" id="balloonContainer"></div>
+
+    <div class="main-wrapper">
+        <h1>¡FELIZ CUMPLEAÑOS A LA NIÑA MÁS HERMOSA DEL MUNDOOOOOO!</h1>
+
+        <!-- Pastel Gigante Vainilla con Velas Explosivas -->
+        <div class="cake-large">
+            <div class="candles-box">
+                <div class="candle-stick">
+                    <div class="flame-real"></div>
+                    <div class="sparkle" style="--dx: -1.5; --dy: -2;"></div>
+                    <div class="sparkle" style="--dx: 1.2; --dy: -2.2;"></div>
+                </div>
+                <div class="candle-stick">
+                    <div class="flame-real"></div>
+                    <div class="sparkle" style="--dx: -0.8; --dy: -2.5;"></div>
+                    <div class="sparkle" style="--dx: 0.9; --dy: -2.1;"></div>
+                </div>
+                <div class="candle-stick">
+                    <div class="flame-real"></div>
+                    <div class="sparkle" style="--dx: -1.2; --dy: -2.1;"></div>
+                    <div class="sparkle" style="--dx: 1.5; --dy: -2.3;"></div>
+                </div>
+            </div>
+
+            <div class="cake-layer layer-top"><div class="frosting-drip"></div></div>
+            <div class="cake-layer layer-middle"><div class="frosting-drip"></div></div>
+            <div class="cake-layer layer-bottom"><div class="frosting-drip"></div></div>
         </div>
 
-        <p class="love-text">TE AMO MAS DE LO Q PUEDAS LLEGAR A IMAGINAR Y SENTIR</p>
+        <!-- Texto exacto solicitado con letras grandes y hermosas -->
+        <div class="love-message">TE AMO MAS DE LO Q PUEDAS LLEGAR A IMAGINAR Y SENTIR</div>
+
+        <a href="index.html" class="btn-multiverse">⬅ Volver al multiverso</a>
     </div>
 
-    <a href="index.html" class="back-btn">Regresar al multiverso</a>
-
     <script>
-        // Efecto de fuegos artificiales simples y globos
-        function createFirework() {
-            const f = document.createElement('div');
-            f.style.position = 'absolute'; f.style.left = Math.random() * 100 + 'vw';
-            f.style.top = Math.random() * 50 + 'vh'; f.style.fontSize = '30px';
-            f.innerText = '✨'; document.getElementById('fireworks').appendChild(f);
-            setTimeout(() => f.remove(), 1000);
+        // Generador de fuegos artificiales dinámicos
+        const fwContainer = document.getElementById('fwContainer');
+        setInterval(() => {
+            const fw = document.createElement('div');
+            fw.classList.add('firework');
+            fw.style.left = Math.random() * 90 + 5 + 'vw';
+            fw.style.top = Math.random() * 70 + 10 + 'vh';
+            fwContainer.appendChild(fw);
+            setTimeout(() => fw.remove(), 1500);
+        }, 800);
+
+        // Generador de globos realistas cayendo y flotando
+        const bContainer = document.getElementById('balloonContainer');
+        const bColors = ['#ff4081', '#ffeb3b', '#00e676', '#00b0ff', '#e040fb', '#ff5722'];
+        for (let i = 0; i < 18; i++) {
+            const balloon = document.createElement('div');
+            balloon.classList.add('balloon-real');
+            balloon.style.left = Math.random() * 95 + 'vw';
+            balloon.style.backgroundColor = bColors[Math.floor(Math.random() * bColors.length)];
+            balloon.style.animationDuration = (5 + Math.random() * 5) + 's';
+            balloon.style.animationDelay = (Math.random() * 5) + 's';
+            bContainer.appendChild(balloon);
         }
-        setInterval(createFirework, 500);
     </script>
 </body>
 </html>
