@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<audio id="bgMusic" src="Canción.mp3" loop></audio>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -515,3 +516,21 @@
         🎁 Pícale aquí ✨
     </a>
 </div>
+<script>
+    const music = document.getElementById('bgMusic');
+    music.volume = 0.8;
+
+    function playAudio() {
+        music.play().then(() => {
+            window.removeEventListener('click', playAudio);
+            window.removeEventListener('touchstart', playAudio);
+        }).catch(e => {
+            console.log("Esperando interacción.");
+        });
+    }
+
+    music.play().catch(() => {
+        window.addEventListener('click', playAudio);
+        window.addEventListener('touchstart', playAudio);
+    });
+</script>
