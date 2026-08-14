@@ -12,7 +12,7 @@
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            transform: translateZ(0); /* Forzar aceleración por hardware */
+            transform: translateZ(0);
         }
 
         body, html {
@@ -205,7 +205,7 @@
         }
 
         /* ==========================================================================
-           8. NUEVO PASTEL DE VAINILLA ELEGANTE Y SOFISTICADO (CERO INFANTIL)
+           8. PASTEL DE VAINILLA ELEGANTE
            ========================================================================== */
         .mega-cake {
             position: relative;
@@ -224,7 +224,6 @@
             border-radius: 20px;
         }
 
-        /* Capa Base de Vainilla Elegante */
         .tier-base {
             bottom: 0;
             width: 820px;
@@ -235,7 +234,6 @@
             box-shadow: inset 0 20px 30px rgba(255,255,255,0.9), inset 0 -20px 30px rgba(90,62,27,0.5);
         }
 
-        /* Capa Intermedia de Vainilla Elegante */
         .tier-middle {
             bottom: 138px;
             width: 650px;
@@ -246,7 +244,6 @@
             box-shadow: inset 0 18px 25px rgba(255,255,255,0.9), inset 0 -18px 25px rgba(107,73,32,0.4);
         }
 
-        /* Capa Superior de Vainilla Elegante */
         .tier-top {
             bottom: 268px;
             width: 470px;
@@ -257,7 +254,6 @@
             box-shadow: inset 0 15px 22px rgba(255,255,255,1), inset 0 -15px 22px rgba(125,88,40,0.4);
         }
 
-        /* Relleno fino de vainilla gourmet / crema tostada */
         .cake-filling-vanilla {
             position: absolute;
             bottom: 0;
@@ -268,7 +264,6 @@
             box-shadow: 0 4px 8px rgba(0,0,0,0.4);
         }
 
-        /* Cobertura superior de crema diplomática elegante con brillo sutil */
         .frosting-vanilla {
             position: absolute;
             top: 0;
@@ -279,7 +274,6 @@
             box-shadow: 0 8px 15px rgba(0,0,0,0.2);
         }
 
-        /* Perlas decorativas doradas elegantes */
         .gold-pearl {
             position: absolute;
             width: 10px;
@@ -332,18 +326,26 @@
         }
 
         /* ==========================================================================
-           10. TEXTO ROMÁNTICO Y BOTÓN ESTELAR
+           10. TEXTO ROMÁNTICO ULTRA REFLEJANTE Y LLAMATIVO (NUEVO TOQUE)
            ========================================================================== */
         .love-text-floating {
             font-family: 'Cinzel', serif;
-            font-size: 1.8rem;
+            font-size: 1.85rem;
             font-weight: 900;
-            color: #fffae6;
+            background: linear-gradient(180deg, #ffffff 0%, #fff176 40%, #ffd700 50%, #ffa000 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
             margin: 6px 0 10px 0;
-            text-shadow: 0 0 25px rgba(255, 235, 59, 1), 0 0 45px rgba(255, 23, 68, 0.9), 3px 3px 10px rgba(0,0,0,0.9);
-            letter-spacing: 1.5px;
+            filter: drop-shadow(0 0 15px rgba(255, 235, 59, 1)) drop-shadow(0 0 35px rgba(255, 215, 0, 0.9)) drop-shadow(0 4px 6px rgba(0,0,0,0.95));
+            letter-spacing: 2px;
             text-align: center;
+            animation: textShimmer 2s ease-in-out infinite alternate;
             pointer-events: auto;
+        }
+
+        @keyframes textShimmer {
+            0% { transform: scale(1); filter: drop-shadow(0 0 15px rgba(255, 235, 59, 0.9)) drop-shadow(0 4px 6px rgba(0,0,0,0.95)); }
+            100% { transform: scale(1.03); filter: drop-shadow(0 0 30px rgba(255, 255, 255, 1)) drop-shadow(0 0 50px rgba(255, 215, 0, 1)) drop-shadow(0 4px 6px rgba(0,0,0,0.95)); }
         }
 
         .btn-colossal {
@@ -431,14 +433,14 @@
             </div>
         </div>
 
-        <!-- Mensaje -->
+        <!-- Mensaje con Brillo Reflejante Espejo -->
         <div class="love-text-floating">TE AMO MAS DE LO Q PUEDAS LLEGAR A IMAGINAR Y SENTIR</div>
 
         <!-- Botón -->
         <a href="index.html" class="btn-colossal">⬅ Volver al multiverso</a>
     </div>
 
-    <!-- Script optimizado para fluidez total sin lag -->
+    <!-- Script optimizado -->
     <script>
         const skyStorm = document.getElementById('skyStorm');
         const fireworkColors = ['#00e676', '#00b0ff', '#ffea00', '#ff1744', '#ff9100', '#7c4dff', '#ff4081', '#00e5ff', '#ffffff', '#d4af37'];
@@ -462,7 +464,6 @@
         }
         setInterval(lanzarFuegoFluido, 450);
 
-        // Confeti optimizado en cantidad prudente para cero lag
         const confettiRain = document.getElementById('confettiRain');
         for (let i = 0; i < 50; i++) {
             const c = document.createElement('div');
@@ -475,7 +476,6 @@
             confettiRain.appendChild(c);
         }
 
-        // Globos optimizados
         const balloonsStorm = document.getElementById('balloonsStorm');
         const vibrantBalloonColors = ['#00e676', '#00b0ff', '#ffea00', '#ff1744', '#ff9100', '#7c4dff', '#ff4081', '#00e5ff'];
 
